@@ -74,9 +74,9 @@ public class MazeGenerator : MonoBehaviour
 
 	void CreateFloor ()
 	{
-		Vector3 currentPosition = new Vector3 (0, -((wallLength / 2) + floorOffset), -wallLength / 2);
+        Vector3 currentPosition = new Vector3(0, -((wallLength / 2) + floorOffset), -wallLength / 2);
 		GameObject floor = Instantiate (floors [0], currentPosition, Quaternion.identity) as GameObject;
-		floor.transform.localScale = new Vector3 (xSize, floor.transform.localScale.y, ySize);
+		floor.transform.localScale = new Vector3 (xSize * wallLength, floor.transform.localScale.y, ySize * wallLength);
 	}
 
 	void CreateCells ()
