@@ -5,9 +5,11 @@ public class PlayerInputs : MonoBehaviour {
 
     [SerializeField]private int             _playerNumber;
                     private PlayerMovement  _movement;
+                    private Shoot           _shoot;
     void Start()
     {
         _movement = GetComponent<PlayerMovement>();
+        _shoot = GetComponent<Shoot>();
     }
 
 	void Update () {
@@ -120,7 +122,7 @@ public class PlayerInputs : MonoBehaviour {
         }
         if (rightTrigger > 0)
         {
-
+            _shoot.IShoot();
         }
 
         //START & BACK
