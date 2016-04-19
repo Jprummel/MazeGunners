@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-    [SerializeField]private float _moveSpeed;
-    private CharacterController _charController;
+    [SerializeField]private float               _moveSpeed;
+                    private CharacterController _charController;
 
 	void Start () 
     {
