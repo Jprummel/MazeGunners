@@ -16,8 +16,8 @@ public class InputAxes{
     public const string LB      = "Xbox_LB";
     public const string RB      = "Xbox_RB";
     //Analog Clicks
-    public const string L3      = "Xbox_L3";
-    public const string R3      = "Xbox_R3";
+    public const string L3      = "Xbox_LeftStick_Click";
+    public const string R3      = "Xbox_RightStick_Click";
     //Analog Sticks
     //Left
     public const string LEFTX   = "Xbox_LeftStick_X";
