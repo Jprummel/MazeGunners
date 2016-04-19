@@ -3,10 +3,11 @@ using System.Collections;
 
 public class PlayerInputs : MonoBehaviour {
 
-    [SerializeField]private int _playerNumber;
+    [SerializeField]private int             _playerNumber;
+                    private PlayerMovement  _movement;
     void Start()
     {
-       
+        _movement = GetComponent<PlayerMovement>();
     }
 
 	void Update () {
@@ -29,7 +30,7 @@ public class PlayerInputs : MonoBehaviour {
 
         }
 
-        float dpadY = Input.GetAxis(InputAxes.DPADY); //DPAD Y AXIS
+        float dpadY = Input.GetAxis(InputAxes.DPADY + _playerNumberString); //DPAD Y AXIS
 
         if (dpadY > 0)
         {
@@ -41,22 +42,24 @@ public class PlayerInputs : MonoBehaviour {
         }
 
         //ANALOG STICKS
-        float leftX = Input.GetAxis(InputAxes.LEFTX); //LEFT ANALOG X AXIS
-        float leftY = Input.GetAxis(InputAxes.LEFTY); //LEFT ANALOG Y AXIS
+        float leftX = Input.GetAxis(InputAxes.LEFTX + _playerNumberString); //LEFT ANALOG X AXIS
+        float leftY = Input.GetAxis(InputAxes.LEFTY + _playerNumberString); //LEFT ANALOG Y AXIS
 
-        Vector3 inputVector = new Vector3(Input.GetAxis(InputAxes.LEFTX),0, -Input.GetAxis(InputAxes.LEFTY));
+        Vector3 inputVector = new Vector3(leftX,0, -leftY);
 
         if (leftX != 0 || leftY != 0)
         {
-            
+            _movement.Move(inputVector);
+            Debug.Log("Moving on player " + _playerNumberString);
         }
 
-        float rightX = Input.GetAxis(InputAxes.RIGHTX); //RIGHT ANALOG X AXIS
-        float rightY = Input.GetAxis(InputAxes.RIGHTY); //RIGHT ANALOG X AXIS
-        
-        if (rightX != 0)
-        {
+        float rightX = Input.GetAxis(InputAxes.RIGHTX + _playerNumberString); //RIGHT ANALOG X AXIS
+        float rightY = Input.GetAxis(InputAxes.RIGHTY + _playerNumberString); //RIGHT ANALOG X AXIS
 
+        Vector3 rotationVector = new Vector3(rightY,rightX,0);
+        if (rightX != 0 || rightY !=0)
+        {
+            _movement.Rotate(rotationVector);
         }
 
         if (rightY != 0)
@@ -64,33 +67,33 @@ public class PlayerInputs : MonoBehaviour {
 
         }
 
-        if (Input.GetButtonDown(InputAxes.L3))
+        if (Input.GetButtonDown(InputAxes.L3 + _playerNumberString))
         {
 
         }
 
-        if (Input.GetButtonDown(InputAxes.R3))
+        if (Input.GetButtonDown(InputAxes.R3 + _playerNumberString))
         {
 
         }
 
         //FACE BUTTONS
-        if (Input.GetButtonDown(InputAxes.A))
+        if (Input.GetButtonDown(InputAxes.A + _playerNumberString))
+        {
+            Debug.Log("Pressed A on player " + _playerNumberString);
+        }
+
+        if (Input.GetButtonDown(InputAxes.B + _playerNumberString))
         {
 
         }
 
-        if (Input.GetButtonDown(InputAxes.B))
-        {
-
-        }
-        
-        if (Input.GetButtonDown(InputAxes.X))
+        if (Input.GetButtonDown(InputAxes.X + _playerNumberString))
         {
          
         }
 
-        if (Input.GetButtonDown(InputAxes.Y))
+        if (Input.GetButtonDown(InputAxes.Y + _playerNumberString))
         {
 
         }
@@ -98,18 +101,18 @@ public class PlayerInputs : MonoBehaviour {
         //BUMPERS & TRIGGERS
 
         //BUMPERS
-        if (Input.GetButton(InputAxes.LB))
+        if (Input.GetButton(InputAxes.LB + _playerNumberString))
         {
 
         }
-        if (Input.GetButtonDown(InputAxes.RB))
+        if (Input.GetButtonDown(InputAxes.RB + _playerNumberString))
         {
 
         }
 
         //TRIGGERS
-        float leftTrigger = Input.GetAxis(InputAxes.LT);
-        float rightTrigger = Input.GetAxis(InputAxes.RT);
+        float leftTrigger  = Input.GetAxis(InputAxes.LT + _playerNumberString);
+        float rightTrigger = Input.GetAxis(InputAxes.RT + _playerNumberString);
 
         if (leftTrigger > 0)
         {
@@ -121,12 +124,12 @@ public class PlayerInputs : MonoBehaviour {
         }
 
         //START & BACK
-        if (Input.GetButtonDown(InputAxes.START))
+        if (Input.GetButtonDown(InputAxes.START + _playerNumberString))
         {
 
         }
 
-        if (Input.GetButtonDown(InputAxes.BACK))
+        if (Input.GetButtonDown(InputAxes.BACK + _playerNumberString))
         {
 
         }
