@@ -4,12 +4,14 @@ using System.Collections;
 public class PlayerInputs : MonoBehaviour {
 
     [SerializeField]private int             _playerNumber;
+                    private PauseGame       _pause;
                     private PlayerMovement  _movement;
                     private Shoot           _shoot;
     void Start()
     {
-        _movement = GetComponent<PlayerMovement>();
-        _shoot = GetComponent<Shoot>();
+        _pause      = GetComponent<PauseGame>();
+        _movement   = GetComponent<PlayerMovement>();
+        _shoot      = GetComponent<Shoot>();
     }
 
 	void Update () {
@@ -128,7 +130,7 @@ public class PlayerInputs : MonoBehaviour {
         //START & BACK
         if (Input.GetButtonDown(InputAxes.START + _playerNumberString))
         {
-
+            _pause.PauseToggle();
         }
 
         if (Input.GetButtonDown(InputAxes.BACK + _playerNumberString))
