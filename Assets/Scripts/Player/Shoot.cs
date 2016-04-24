@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Shoot : MonoBehaviour
 {
-    //private float _damage = 100;
-    //[SerializeField]private GameObject _muzzle;
+    //private float _damage = 1;
+    //[SerializeField]private GameObject _crosshair; //use for crosshair
     private RaycastHit _hit;
     private Vector3 _shootDirection;
 
@@ -28,6 +28,7 @@ public class Shoot : MonoBehaviour
             //_hit.transform.SendMessage("ApplyDammage", _damage, SendMessageOptions.DontRequireReceiver); //Call the method Apply Damage in the gameobject that is hit
             _reloadTimeStamp = Time.time;
             Debug.Log("hit");
+            //Debug.DrawRay(transform.position, _shootDirection, Color.green);
         }
     }
 }
