@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shoot : MonoBehaviour
+public class HitScanWeapon : MonoBehaviour, IWeapon
 {
     //private float _damage = 1;
     //[SerializeField]private GameObject _crosshair; //use for crosshair
@@ -17,11 +17,11 @@ public class Shoot : MonoBehaviour
         _shootDirection = transform.TransformDirection(Vector3.forward); //the direction the player is facing
         if(Input.GetMouseButtonDown(0))
         {
-            IShoot();
+            Shoot();
         }
     }
 
-    public void IShoot()
+    public void Shoot()
     {
         if (Physics.Raycast(transform.position, _shootDirection, _gunRange) && Time.time >= _reloadTimeStamp + _reloadTime) //if a game object is in front of player but within gunrange units of it trigger a hit
         {
