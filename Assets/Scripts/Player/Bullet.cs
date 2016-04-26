@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
         /*float delta = Time.deltaTime;
         transform.Translate(Vector3.forward * _speed * delta);
         _lifeTime += delta;
@@ -47,6 +48,7 @@ public class Bullet : MonoBehaviour
     IEnumerator DestructionDelay()
     {
         yield return new WaitForSeconds(_maxLifeTime);
+        _objectPoolScript.PoolObject(this.gameObject);
         //Destroy(this.gameObject);
     }
 }
