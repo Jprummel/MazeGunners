@@ -6,12 +6,14 @@ public class PlayerInputs : MonoBehaviour {
     [SerializeField]private int             _playerNumber;
                     private PauseGame       _pause;
                     private PlayerMovement  _movement;
-                    private Shoot           _shoot;
+                    private SwitchWeapon    _switchWeapon;
+                    private Shooting        _shooting;
     void Start()
     {
-        _pause      = GetComponent<PauseGame>();
-        _movement   = GetComponent<PlayerMovement>();
-        _shoot      = GetComponent<Shoot>();
+        _pause          = GetComponent<PauseGame>();
+        _movement       = GetComponent<PlayerMovement>();
+        _switchWeapon   = GetComponent<SwitchWeapon>();
+        _shooting       = GetComponent<Shooting>();
     }
 
 	void Update () {
@@ -106,11 +108,11 @@ public class PlayerInputs : MonoBehaviour {
         //BUMPERS
         if (Input.GetButton(InputAxes.LB + _playerNumberString))
         {
-
+            _switchWeapon.PreviousWeapon();
         }
         if (Input.GetButtonDown(InputAxes.RB + _playerNumberString))
         {
-
+            _switchWeapon.NextWeapon();
         }
 
         //TRIGGERS
@@ -123,7 +125,7 @@ public class PlayerInputs : MonoBehaviour {
         }
         if (rightTrigger > 0)
         {
-            _shoot.IShoot();
+            _shooting.Shoot();
         }
 
         //START & BACK
