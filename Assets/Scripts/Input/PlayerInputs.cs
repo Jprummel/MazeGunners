@@ -60,15 +60,14 @@ public class PlayerInputs : MonoBehaviour {
         float rightX = Input.GetAxis(InputAxes.RIGHTX + _playerNumberString); //RIGHT ANALOG X AXIS
         float rightY = Input.GetAxis(InputAxes.RIGHTY + _playerNumberString); //RIGHT ANALOG X AXIS
 
-        Vector3 rotationVector = new Vector3(rightY,rightX,0);
-        if (rightX != 0 || rightY !=0)
+        if (rightX != 0)
         {
-            _movement.Rotate(rotationVector);
+            _movement.RotateX(100,rightX);
         }
 
         if (rightY != 0)
         {
-
+            _movement.RotateY(150,rightY);
         }
 
         if (Input.GetButtonDown(InputAxes.L3 + _playerNumberString))
