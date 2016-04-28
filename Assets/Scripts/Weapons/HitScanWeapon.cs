@@ -18,7 +18,7 @@ public class HitScanWeapon : MonoBehaviour, IWeapon
     {
         if (Physics.Raycast(transform.position, _shootDirection, _gunRange))
         {
-            //_hit.transform.SendMessage("ApplyDammage", _damage, SendMessageOptions.DontRequireReceiver); //Call the method Apply Damage in the gameobject that is hit
+            //_hit.transform.SendMessage("ApplyDamage", _damage, SendMessageOptions.DontRequireReceiver); //Call the method Apply Damage in the gameobject that is hit
             //Debug.DrawRay(transform.position, _shootDirection, Color.green);
             Debug.Log("hit");
         }

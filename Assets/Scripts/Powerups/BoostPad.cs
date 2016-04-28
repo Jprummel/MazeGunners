@@ -15,11 +15,11 @@ public class BoostPad : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        other.SendMessage("SpeedUp");
+        other.SendMessage("SpeedUp", SendMessageOptions.DontRequireReceiver);
     }
 
     void OnTriggerExit(Collider other)
     {
-        other.SendMessage("SlowDown");
+        other.SendMessage("SlowDown", SendMessageOptions.DontRequireReceiver);
     }
 }
