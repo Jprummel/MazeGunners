@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Start () 
     {
-        _playerArms = transform.Find("Arms");
+        _playerArms = transform.Find("PlayerArms");
         _charController = GetComponent<CharacterController>();
 	}
 
