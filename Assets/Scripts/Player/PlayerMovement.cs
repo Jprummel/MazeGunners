@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
     void UpdateRotation()
     {
         Vector3 playerRotation = new Vector3(0, _rotationX);
-        Vector3 armsRotation = new Vector3(_rotationY,0);
+        Vector3 armsRotation = new Vector3(_rotationY,_rotationX);
         transform.eulerAngles = playerRotation;
         _playerArms.eulerAngles = armsRotation;
     }
