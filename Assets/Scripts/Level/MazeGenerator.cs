@@ -18,6 +18,7 @@ public class MazeGenerator : MonoBehaviour
 	[SerializeField]private List<GameObject> walls = new List<GameObject> ();
 	[SerializeField]private List<GameObject> floors = new List<GameObject> ();
 	[SerializeField]private float wallLength = 1.0f;
+	[SerializeField]private float floorYOffset = .7f;
 	[SerializeField]private int xSize = 5;
 	[SerializeField]private int ySize = 5;
 
@@ -26,7 +27,6 @@ public class MazeGenerator : MonoBehaviour
     private GameObject floorHolder;
 	public Cell[] cells;
 
-	private float floorOffset;
 	private int currentCell;
 	private int totalCells;
 	private int visitedCells;
@@ -40,7 +40,6 @@ public class MazeGenerator : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		floorOffset = floors [0].transform.localScale.y / 2;
 		CreateWalls ();
 	}
 
@@ -48,16 +47,23 @@ public class MazeGenerator : MonoBehaviour
 	{
 		wallHolder = new GameObject ();
 		wallHolder.name = "maze";
+		floorHolder = new GameObject ();
+		wallHolder.name = "floor";
 
 		initialPos = new Vector3 ((-xSize / 2) + wallLength / 2, 0.0f, (-ySize / 2) + wallLength / 2);
 		Vector3 myPos = initialPos;
 		GameObject tempWall;
+	    GameObject tempFloor;
 		//For x Axis
 		for (int i = 0; i < ySize; i++) {
 			for (int j = 0; j <= xSize; j++) {
 				myPos = new Vector3 (initialPos.x + (j * wallLength) - wallLength / 2, 0.0f, initialPos.z + (i * wallLength) - wallLength / 2); //wall placement position
 				tempWall = Instantiate (walls [0], myPos, Quaternion.identity) as GameObject;
 				tempWall.transform.parent = wallHolder.transform;
+				myPos.x += wallLength / 2;
+				myPos.y = -floorYOffset;
+				tempFloor = Instantiate (floors [0], myPos, Quaternion.identity) as GameObject;
+				tempFloor.transform.parent = floorHolder.transform;
 			}
 		}
 		//For y Axis
@@ -68,15 +74,15 @@ public class MazeGenerator : MonoBehaviour
 				tempWall.transform.parent = wallHolder.transform;
 			}
 		}
-		CreateFloor ();
+		//CreateFloor ();
 		CreateCells ();
 	}
 
 	void CreateFloor ()
 	{
-        Vector3 currentPosition = new Vector3(0, -((wallLength / 2) + floorOffset), -wallLength / 2);
+		Vector3 currentPosition = new Vector3(0, -floorYOffset, -wallLength / 2);
 		GameObject floor = Instantiate (floors [0], currentPosition, Quaternion.identity) as GameObject;
-		floor.transform.localScale = new Vector3 (xSize * wallLength, floor.transform.localScale.y, ySize * wallLength);
+		//floor.transform.localScale = new Vector3 (xSize * wallLength, floor.transform.localScale.y, ySize * wallLength);
 	}
 
 	void CreateCells ()
