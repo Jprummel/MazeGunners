@@ -3,25 +3,24 @@ using System.Collections;
 
 public class Wall : MonoBehaviour {
 
-    private MeshRenderer _meshRenderer;
+    private GameObject _transparantWall;
+    private ObjectPool _objectPoolScript;
 
-	// Use this for initialization
-	void Start () {
-        _meshRenderer = GetComponent<MeshRenderer>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Start()
+    {
+        _objectPoolScript = GameObject.FindWithTag(Tags.OBJECTPOOL).GetComponent<ObjectPool>();
+    }
 
     void ClearWall()
     {
-        _meshRenderer.enabled = false;
+        gameObject.layer = 8;
+        _transparantWall = ObjectPool.instance.GetObjectForType(Tags.TRANSPARANTWALL, false);
+        _transparantWall.transform.position = transform.position;
     }
 
     void OpaqueWall()
     {
-        _meshRenderer.enabled = true;
+        gameObject.layer = 0;
+        _objectPoolScript.PoolObject(_transparantWall);
     }
 }

@@ -6,17 +6,22 @@ public class WallHack: MonoBehaviour
     private RaycastHit _hit;
     private Vector3 _direction;
     private float _wallHackRange = 40;
+
     private Transform _lastHit;
     private Transform _currentHit;
+    private Camera _camera;
+    private int _oldMask;
+    private bool _isClearingWall = false;
 
     void Start()
     {
         _lastHit = transform;
+        _camera = gameObject.GetComponentInChildren<Camera>();
+        _oldMask = _camera.cullingMask;
     }
 
     void Update()
     {
-        
         LookForWall();
     }
 
@@ -28,15 +33,23 @@ public class WallHack: MonoBehaviour
             _currentHit = _hit.transform;
             if ( _lastHit != _currentHit)
             {
-                _lastHit.SendMessage("OpaqueWall", SendMessageOptions.DontRequireReceiver);
+                _lastHit.SendMessage("OpaqueWall", SendMessageOptions.DontRequireReceiver); //call the method ClearWall() in the gameobject that was previously hit
                 _lastHit = _currentHit;
             }
 
-            if (_hit.transform.tag == "Wall")
+            if (_hit.transform.tag == Tags.WALL && !_isClearingWall)
             {
+                
                 _hit.transform.SendMessage("ClearWall", SendMessageOptions.DontRequireReceiver); //call the method ClearWall() in the gameobject that is hit
+                _camera.cullingMask &= ~(1 << 8);
+                _isClearingWall = true;
             }
-            //Debug.Log("hit");
+
+            if(_hit.transform.tag != Tags.WALL)
+            {
+                _camera.cullingMask = _oldMask;
+                _isClearingWall = false;
+            }
         }
     }
 
