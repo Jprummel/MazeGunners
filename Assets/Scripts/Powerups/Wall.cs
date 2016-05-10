@@ -19,4 +19,9 @@ public class Wall : MonoBehaviour {
     {
         _meshRenderer.enabled = false;
     }
+
+    void OpaqueWall()
+    {
+        _meshRenderer.enabled = true;
+    }
 }
