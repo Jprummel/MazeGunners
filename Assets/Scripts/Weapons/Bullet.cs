@@ -38,11 +38,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.SendMessage("ApplyDamage", _dmg);
+            other.SendMessage("ApplyDamage", _dmg,SendMessageOptions.DontRequireReceiver);
             //Instantiate(_explosionPrefab, this.transform.position, this.transform.rotation);
             //Destroy(this.gameObject);
-            _objectPoolScript.PoolObject(this.gameObject);
         }
+        _objectPoolScript.PoolObject(this.gameObject);
     }
 
     IEnumerator DestructionDelay()
