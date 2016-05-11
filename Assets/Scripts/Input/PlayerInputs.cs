@@ -55,6 +55,9 @@ public class PlayerInputs : MonoBehaviour {
 
         if (leftX != 0 || leftY != 0)
         {
+            if(leftY > 0.2){
+                inputVector = inputVector / 3;
+            }
             _movement.Move(inputVector);
             Debug.Log("Moving on player " + _playerNumberString);
         }
@@ -64,12 +67,12 @@ public class PlayerInputs : MonoBehaviour {
 
         if (rightX != 0)
         {
-            _movement.RotateX(100,rightX);
+            _movement.RotateX(75,rightX);
         }
 
         if (rightY != 0)
         {
-            _movement.RotateY(150,rightY);
+            _movement.RotateY(75,rightY);
         }
 
         if (Input.GetButtonDown(InputAxes.L3 + _playerNumberString))

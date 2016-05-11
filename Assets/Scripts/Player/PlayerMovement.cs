@@ -25,9 +25,9 @@ public class PlayerMovement : MonoBehaviour {
         
         moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z);
         moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= _moveSpeed;
+        //moveDirection *= _moveSpeed;
 
-        _charController.Move(moveDirection * Time.deltaTime);
+        _charController.Move(moveDirection *_moveSpeed * Time.deltaTime);
     }
 
     public void RotateX(float rotationSpeed, float value)
