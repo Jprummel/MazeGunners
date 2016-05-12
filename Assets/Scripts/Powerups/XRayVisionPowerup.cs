@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WallHack: MonoBehaviour
+public class XRayVisionPowerup: MonoBehaviour
 {
     private RaycastHit _hit;
     private Vector3 _direction;
     private float _wallHackRange = 40;
+    private float _xRayVisionDuration = 5;
 
     private Transform _lastHit;
     private Transform _currentHit;
     private Camera _camera;
     private int _oldMask;
     private bool _isClearingWall = false;
+    private bool _isXRayActive = false;
 
     void Start()
     {
@@ -22,7 +24,20 @@ public class WallHack: MonoBehaviour
 
     void Update()
     {
-        LookForWall();
+        if(_isXRayActive == true)
+        {
+            LookForWall();
+        }
+    }
+
+    void OnEnable()
+    {
+        Pickup.OnPickup += ActivateXRay;
+    }
+
+    void OnDisable()
+    {
+        Pickup.OnPickup -= ActivateXRay;
     }
 
     void LookForWall()
@@ -51,6 +66,18 @@ public class WallHack: MonoBehaviour
                 _isClearingWall = false;
             }
         }
+    }
+
+    void ActivateXRay()
+    {
+        _isXRayActive = true;
+        StartCoroutine(XRayVision());
+    }
+
+    IEnumerator XRayVision()
+    {
+        yield return new WaitForSeconds(_xRayVisionDuration);
+        _isXRayActive = false;
     }
 
 }
