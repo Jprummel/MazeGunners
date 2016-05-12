@@ -7,13 +7,13 @@ public class PlayerInputs : MonoBehaviour {
                     private PauseGame       _pause;
                     private PlayerMovement  _movement;
                     private SwitchWeapon    _switchWeapon;
-                    private Shooting        _shooting;
+                    private Shoot           _shoot;
     void Start()
     {
         _pause          = GetComponent<PauseGame>();
         _movement       = GetComponent<PlayerMovement>();
         _switchWeapon   = GetComponent<SwitchWeapon>();
-        _shooting       = GetComponent<Shooting>();
+        _shoot          = GetComponent<Shoot>();
     }
 
 	void Update () {
@@ -128,7 +128,7 @@ public class PlayerInputs : MonoBehaviour {
         }
         if (rightTrigger > 0)
         {
-            _shooting.Shoot();
+            _shoot.ShootWeapon();
         }
 
         //START & BACK

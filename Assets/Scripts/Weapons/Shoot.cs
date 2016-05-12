@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shooting : MonoBehaviour {
+public class Shoot : MonoBehaviour {
 
     private bool _isReloading;
-    private float _reloadTime = 5;
     private SwitchWeapon _switchWeapon;
 
 	// Use this for initialization
@@ -22,7 +21,7 @@ public class Shooting : MonoBehaviour {
         }*/
 	}
 
-    public void Shoot()
+    public void ShootWeapon()
     {
         if (_isReloading == false)
         {
@@ -34,7 +33,7 @@ public class Shooting : MonoBehaviour {
     IEnumerator Reload()
     {
         _isReloading = true;
-        yield return new WaitForSeconds(_reloadTime);
+        yield return new WaitForSeconds(_switchWeapon.CurrentWeapon.Reload());
         _isReloading = false;
     }
 

@@ -8,6 +8,7 @@ public class HitScanWeapon : MonoBehaviour, IWeapon
     private RaycastHit _hit;
     private Vector3 _shootDirection;
     private float _gunRange = 40;
+    private float _reloadTime = 5;
 
     void Update()
     {
@@ -22,6 +23,11 @@ public class HitScanWeapon : MonoBehaviour, IWeapon
             //Debug.DrawRay(transform.position, _shootDirection, Color.green);
             Debug.Log("hit");
         }
+    }
+
+    public float Reload()
+    {
+        return _reloadTime;
     }
 
 }

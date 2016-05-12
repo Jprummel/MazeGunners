@@ -1,25 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BoostPad : MonoBehaviour {
+public class BoostPad : MonoBehaviour
+{
+    public delegate void SpeedUpAction();
+    public static event SpeedUpAction OnSpeedUp;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    void OnTriggerEnter(Collider other)
+    void SpeedUp()
     {
-        other.SendMessage("SpeedUp", SendMessageOptions.DontRequireReceiver);
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        other.SendMessage("SlowDown", SendMessageOptions.DontRequireReceiver);
+        if(OnSpeedUp != null)
+        {
+            OnSpeedUp();
+        }
     }
 }

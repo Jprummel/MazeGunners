@@ -7,6 +7,7 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
     [SerializeField]private GameObject _muzzle; //shoots from here
     private float _randomAngle;
     private float _randomBounds = 1.5f;
+    private float _reloadTime = 1;
 
 	// Use this for initialization
 	void Start () 
@@ -32,5 +33,10 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
         bullet.transform.position = _muzzle.transform.position;
         bullet.transform.rotation = rotation;
         bullet.transform.Rotate(_randomAngle, _randomAngle, 0);
+    }
+
+    public float Reload()
+    {
+        return _reloadTime;
     }
 }

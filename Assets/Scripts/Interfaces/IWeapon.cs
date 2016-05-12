@@ -4,4 +4,5 @@ using System.Collections;
 public interface IWeapon
 {
     void Shoot();
+    float Reload();
 }
