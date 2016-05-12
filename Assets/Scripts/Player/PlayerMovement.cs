@@ -5,13 +5,15 @@ public class PlayerMovement : MonoBehaviour {
 
     [SerializeField]private float               _moveSpeed;
                     private CharacterController _charController;
-                    private Transform _playerArms;
-                    private float _rotationX;
-                    private float _rotationY;
+                    private Transform           _playerArms;
+    [SerializeField]private Transform           _camera;
+                    private float               _rotationX;
+                    private float               _rotationY;
+    [SerializeField]private float _minY, _maxY;
 
 	void Start () 
     {
-        _playerArms = transform.Find("PlayerArms");
+        _playerArms = transform.Find("PlayerContainer/PlayerArms");
         _charController = GetComponent<CharacterController>();
 	}
 
@@ -44,9 +46,10 @@ public class PlayerMovement : MonoBehaviour {
     void UpdateRotation()
     {
         Vector3 playerRotation = new Vector3(0, _rotationX);
-        Vector3 armsRotation = new Vector3(_rotationY,_rotationX);
+        Vector3 lookingRotation = new Vector3(_rotationY,_rotationX);
         transform.eulerAngles = playerRotation;
-        _playerArms.eulerAngles = armsRotation;
+        _playerArms.eulerAngles = lookingRotation;
+        _camera.eulerAngles = lookingRotation;
     }
 
 }

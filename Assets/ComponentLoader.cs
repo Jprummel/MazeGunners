@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ComponentLoader : MonoBehaviour {
-	private List<T> components;
+	//private List<T> components;
 	// Use this for initialization
 	void Start () {
 	

@@ -55,7 +55,7 @@ public class PlayerInputs : MonoBehaviour {
 
         if (leftX != 0 || leftY != 0)
         {
-            if(leftY > 0.2){
+            if(leftY > 0.2 || leftY >= 0 && leftX !=0){
                 inputVector = inputVector / 3;
             }
             _movement.Move(inputVector);
