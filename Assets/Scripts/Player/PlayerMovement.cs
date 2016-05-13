@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField]private Transform           _camera;
                     private float               _rotationX;
                     private float               _rotationY;
-    [SerializeField]private float _minY, _maxY;
+    [SerializeField]private float               _minY, _maxY;
+                    private float               _speedUpAmount = 5;
 
 	void Start () 
     {
@@ -20,6 +21,16 @@ public class PlayerMovement : MonoBehaviour {
     void Update()
     {
         UpdateRotation();
+    }
+
+    void OnEnable()
+    {
+        BoostPad.OnSpeedUp += SpeedUp;
+    }
+
+    void OnDisable()
+    {
+        BoostPad.OnSpeedUp -= SpeedUp;
     }
 
     public void Move(Vector3 moveDirection)
@@ -50,6 +61,14 @@ public class PlayerMovement : MonoBehaviour {
         transform.eulerAngles = playerRotation;
         _playerArms.eulerAngles = lookingRotation;
         _camera.eulerAngles = lookingRotation;
+    }
+
+    void SpeedUp()
+    {
+        if (_moveSpeed < (_moveSpeed + _speedUpAmount))
+        {
+            _moveSpeed += _speedUpAmount;
+        }
     }
 
 }

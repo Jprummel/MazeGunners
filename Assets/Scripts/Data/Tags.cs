@@ -9,4 +9,6 @@ public class Tags : MonoBehaviour {
     public const string OBJECTPOOL      = "ObjectPool";
     public const string TRANSPARANTWALL = "TransparantWall";
     public const string WALL            = "Wall";
+    public const string MUZZLEFLASH     = "MuzzleFlash";
+    public const string HITEFFECT       = "HitEffect";
 }

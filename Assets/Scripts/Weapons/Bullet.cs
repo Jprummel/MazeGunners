@@ -39,8 +39,8 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.SendMessage("ApplyDamage", _dmg,SendMessageOptions.DontRequireReceiver);
-            //Instantiate(_explosionPrefab, this.transform.position, this.transform.rotation);
-            //Destroy(this.gameObject);
+            GameObject hitEffect = ObjectPool.instance.GetObjectForType(Tags.HITEFFECT, false);
+            hitEffect.transform.position = transform.position;
         }
         _objectPoolScript.PoolObject(this.gameObject);
     }

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class HitScanWeapon : MonoBehaviour, IWeapon
 {
-    //private float _damage = 1;
-    //[SerializeField]private GameObject _crosshair; //use for crosshair
+    private float _damage = 1;
+    [SerializeField]private Transform _muzzle; //shoots from here
     private RaycastHit _hit;
     private Vector3 _shootDirection;
     private float _gunRange = 40;
@@ -12,16 +12,19 @@ public class HitScanWeapon : MonoBehaviour, IWeapon
 
     void Update()
     {
-        _shootDirection = transform.TransformDirection(Vector3.forward); //the direction the player is facing
+        _shootDirection = _muzzle.TransformDirection(Vector3.forward); //the direction the player is facing
     }
 
     public void Shoot()
     {
-        if (Physics.Raycast(transform.position, _shootDirection, _gunRange))
+        if (Physics.Raycast(_muzzle.transform.position, _shootDirection, _gunRange))
         {
-            //_hit.transform.SendMessage("ApplyDamage", _damage, SendMessageOptions.DontRequireReceiver); //Call the method Apply Damage in the gameobject that is hit
-            //Debug.DrawRay(transform.position, _shootDirection, Color.green);
-            Debug.Log("hit");
+            _hit.transform.SendMessage("ApplyDamage", _damage, SendMessageOptions.DontRequireReceiver); //Call the method Apply Damage in the gameobject that is hit
+            GameObject muzzleFlash = ObjectPool.instance.GetObjectForType(Tags.MUZZLEFLASH, false);
+            muzzleFlash.transform.position = _muzzle.transform.position;
+
+            GameObject hitEffect = ObjectPool.instance.GetObjectForType(Tags.HITEFFECT, false);
+            hitEffect.transform.position = _hit.transform.position;
         }
     }
 
