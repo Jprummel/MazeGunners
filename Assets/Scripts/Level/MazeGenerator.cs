@@ -16,33 +16,33 @@ public class MazeGenerator : MonoBehaviour
 	}
 
 	[SerializeField]private List<GameObject> walls = new List<GameObject> ();
-	[SerializeField]private List<GameObject> floors = new List<GameObject> ();
-	[SerializeField]private float wallLength = 1.0f;
-	[SerializeField]private float floorYOffset = .7f;
-	[SerializeField]private int xSize = 5;
-	[SerializeField]private int ySize = 5;
+	[SerializeField]private List<GameObject> _floors = new List<GameObject> ();
+	[SerializeField]private float _wallLength = 1.0f;
+	[SerializeField]private float _floorYOffset = .7f;
+	[SerializeField]private int _xSize = 10;
+	[SerializeField]private int _ySize = 10;
 	[SerializeField]private GameObject[] _players = new GameObject[4];
 
-	private int[] playerSpawnCellNumbers = new int[4];
+	private int[] _playerSpawnCellNumbers = new int[4];
 
-	private Vector3 initialPos;
-	private GameObject wallHolder;
-    private GameObject floorHolder;
-	public Cell[] cells;
+	private Vector3 _initialPos;
+	private GameObject _wallHolder;
+    private GameObject _floorHolder;
+	private Cell[] _cells;
 
-	private int currentCell;
-	private int totalCells;
-	private int visitedCells;
-	private int currentNeighbour;
-	private int backingUp;
-	private int wallToBreak;
-	private bool startedBuilding = false;
+	private int _currentCell;
+	private int _totalCells;
+	private int _visitedCells;
+	private int _currentNeighbour;
+	private int _backingUp;
+	private int _wallToBreak;
+	private bool _startedBuilding = false;
 
-	private List<int> lastCells;
+	private List<int> _lastCells;
 
 	//Importing settings from datahandler here!!!
 	private LevelData _levelData;
-	[SerializeField]private GameObject[] _placeholderPlayers = new GameObject[4];
+	//[SerializeField]private GameObject[] _placeholderPlayers = new GameObject[4];
 
 	// Use this for initialization
 	void Start ()
@@ -55,50 +55,53 @@ public class MazeGenerator : MonoBehaviour
 
 	void Update(){
 		if (Input.GetMouseButtonDown (0)) {
-			Destroy (wallHolder);
-			Destroy (floorHolder);
-			cells = null;
-			currentCell = 0;
-			totalCells = 0;
-			visitedCells = 0;
-			currentNeighbour = 0;
-			backingUp = 0;
-			wallToBreak = 0;
-			startedBuilding = false;
-			Preperation ();
-			CreateWalls ();
+			ReGenerate ();
 		}
+	}
+	public void ReGenerate(){
+		Destroy (_wallHolder);
+		Destroy (_floorHolder);
+		_cells = null;
+		_currentCell = 0;
+		_totalCells = 0;
+		_visitedCells = 0;
+		_currentNeighbour = 0;
+		_backingUp = 0;
+		_wallToBreak = 0;
+		_startedBuilding = false;
+		Preperation ();
+		CreateWalls ();
 	}
 
 	void CreateWalls ()
 	{
-		wallHolder = new GameObject ();
-		wallHolder.name = "maze";
-		floorHolder = new GameObject ();
-		wallHolder.name = "floor";
+		_wallHolder = new GameObject ();
+		_wallHolder.name = "maze";
+		_floorHolder = new GameObject ();
+		_wallHolder.name = "floor";
 
-		initialPos = new Vector3 ((-xSize / 2) + wallLength / 2, 0.0f, (-ySize / 2) + wallLength / 2);
-		Vector3 myPos = initialPos;
+		_initialPos = new Vector3 ((-_xSize / 2) + _wallLength / 2, 0.0f, (-_ySize / 2) + _wallLength / 2);
+		Vector3 myPos = _initialPos;
 		GameObject tempWall;
 	    GameObject tempFloor;
 		//For x Axis
-		for (int i = 0; i < ySize; i++) {
-			for (int j = 0; j <= xSize; j++) {
-				myPos = new Vector3 (initialPos.x + (j * wallLength) - wallLength / 2, 0.0f, initialPos.z + (i * wallLength) - wallLength / 2); //wall placement position
+		for (int i = 0; i < _ySize; i++) {
+			for (int j = 0; j <= _xSize; j++) {
+				myPos = new Vector3 (_initialPos.x + (j * _wallLength) - _wallLength / 2, 0.0f, _initialPos.z + (i * _wallLength) - _wallLength / 2); //wall placement position
 				tempWall = Instantiate (walls [0], myPos, Quaternion.identity) as GameObject;
-				tempWall.transform.parent = wallHolder.transform;
-				myPos.x += wallLength / 2;
-				myPos.y = -floorYOffset;
-				tempFloor = Instantiate (floors [0], myPos, Quaternion.identity) as GameObject;
-				tempFloor.transform.parent = floorHolder.transform;
+				tempWall.transform.parent = _wallHolder.transform;
+				myPos.x += _wallLength / 2;
+				myPos.y = -_floorYOffset;
+				tempFloor = Instantiate (_floors [0], myPos, Quaternion.identity) as GameObject;
+				tempFloor.transform.parent = _floorHolder.transform;
 			}
 		}
 		//For y Axis
-		for (int i = 0; i <= ySize; i++) {
-			for (int j = 0; j < xSize; j++) {
-				myPos = new Vector3 (initialPos.x + (j * wallLength), 0.0f, initialPos.z + (i * wallLength) - wallLength); //wall placement position
+		for (int i = 0; i <= _ySize; i++) {
+			for (int j = 0; j < _xSize; j++) {
+				myPos = new Vector3 (_initialPos.x + (j * _wallLength), 0.0f, _initialPos.z + (i * _wallLength) - _wallLength); //wall placement position
 				tempWall = Instantiate (walls [0], myPos, Quaternion.Euler (0, 90, 0)) as GameObject;
-				tempWall.transform.parent = wallHolder.transform;
+				tempWall.transform.parent = _wallHolder.transform;
 			}
 		}
 		//CreateFloor ();
@@ -107,45 +110,45 @@ public class MazeGenerator : MonoBehaviour
 
 	void CreateFloor ()
 	{
-		Vector3 currentPosition = new Vector3(0, -floorYOffset, -wallLength / 2);
-		GameObject floor = Instantiate (floors [0], currentPosition, Quaternion.identity) as GameObject;
+		Vector3 currentPosition = new Vector3(0, -_floorYOffset, -_wallLength / 2);
+		GameObject floor = Instantiate (_floors [0], currentPosition, Quaternion.identity) as GameObject;
 		//floor.transform.localScale = new Vector3 (xSize * wallLength, floor.transform.localScale.y, ySize * wallLength);
 	}
 
 	void CreateCells ()
 	{
-		lastCells = new List<int> ();
-		lastCells.Clear ();
+		_lastCells = new List<int> ();
+		_lastCells.Clear ();
 		GameObject[] allWalls;
-		int children = wallHolder.transform.childCount;
+		int children = _wallHolder.transform.childCount;
 		allWalls = new GameObject[children];
-		cells = new Cell[xSize * ySize];
-		totalCells = xSize * ySize;
+		_cells = new Cell[_xSize * _ySize];
+		_totalCells = _xSize * _ySize;
 		int eastWestProcess = 0;
 		int childProcess = 0;
 		int termCount = 0;
 
 		//Gets all children
 		for (int i = 0; i < children; i++) {
-			allWalls [i] = wallHolder.transform.GetChild (i).gameObject;
+			allWalls [i] = _wallHolder.transform.GetChild (i).gameObject;
 		}
 
 		//Assign walls to cells
-		for (int i = 0; i < cells.Length; i++) {
-			if (termCount == xSize) {
+		for (int i = 0; i < _cells.Length; i++) {
+			if (termCount == _xSize) {
 				eastWestProcess++;
 				termCount = 0;
 			}
-			cells [i] = new Cell ();
-			cells [i].east = allWalls [eastWestProcess];
-			cells [i].south = allWalls [childProcess + (xSize + 1) * ySize];
+			_cells [i] = new Cell ();
+			_cells [i].east = allWalls [eastWestProcess];
+			_cells [i].south = allWalls [childProcess + (_xSize + 1) * _ySize];
 			eastWestProcess++;
 
 			termCount++;
 			childProcess++;
 
-			cells [i].west = allWalls [eastWestProcess];
-			cells [i].north = allWalls [(childProcess + (xSize + 1) * ySize) + xSize - 1];
+			_cells [i].west = allWalls [eastWestProcess];
+			_cells [i].north = allWalls [(childProcess + (_xSize + 1) * _ySize) + _xSize - 1];
 
 		}
 		CreateMaze ();
@@ -153,23 +156,23 @@ public class MazeGenerator : MonoBehaviour
 
 	void CreateMaze () //depth first search
 	{
-		while (visitedCells < totalCells) {
-			if (startedBuilding) {
+		while (_visitedCells < _totalCells) {
+			if (_startedBuilding) {
 				GetNeighbour ();
-				if (cells [currentNeighbour].visited == false && cells [currentCell].visited == true) {
+				if (_cells [_currentNeighbour].visited == false && _cells [_currentCell].visited == true) {
 					BreakWall ();
-					VisitCell (currentNeighbour);
-					lastCells.Add (currentCell);
-					currentCell = currentNeighbour;
-					if (lastCells.Count > 0) {
-						backingUp = lastCells.Count - 1;
+					VisitCell (_currentNeighbour);
+					_lastCells.Add (_currentCell);
+					_currentCell = _currentNeighbour;
+					if (_lastCells.Count > 0) {
+						_backingUp = _lastCells.Count - 1;
 					}
 				}
 
 			} else {
-				currentCell = Random.Range (0, totalCells);
-				VisitCell (currentCell);
-				startedBuilding = true;
+				_currentCell = Random.Range (0, _totalCells);
+				VisitCell (_currentCell);
+				_startedBuilding = true;
 			}
 		}
 		placeAndSetPlayers ();
@@ -181,42 +184,42 @@ public class MazeGenerator : MonoBehaviour
 		int[] neighbours = new int[4]; // there are only a max of 4 neighbours for each cell,
 		int[] connectingWall = new int[4];
 		int check = 0;
-		check = (currentCell + 1) / xSize;
+		check = (_currentCell + 1) / _xSize;
 		check -= 1;
-		check *= xSize;
-		check += xSize;
+		check *= _xSize;
+		check += _xSize;
 
 		//north
-		if (currentCell + xSize < totalCells) {
-			if (!cells [currentCell + xSize].visited) {
-				neighbours [length] = currentCell + xSize;
+		if (_currentCell + _xSize < _totalCells) {
+			if (!_cells [_currentCell + _xSize].visited) {
+				neighbours [length] = _currentCell + _xSize;
 				connectingWall [length] = 1;
 				length++;
 			}
 		}
 
 		//east
-		if (currentCell - 1 >= 0 && currentCell != check) {
-			if (!cells [currentCell - 1].visited) {
-				neighbours [length] = currentCell - 1;
+		if (_currentCell - 1 >= 0 && _currentCell != check) {
+			if (!_cells [_currentCell - 1].visited) {
+				neighbours [length] = _currentCell - 1;
 				connectingWall [length] = 2;
 				length++;
 			}
 		}
 
 		//west
-		if (currentCell + 1 < totalCells && (currentCell + 1) != check) { //if current cell isn't exceding total cells & if next cell isn't a corner
-			if (!cells [currentCell + 1].visited) {
-				neighbours [length] = currentCell + 1;
+		if (_currentCell + 1 < _totalCells && (_currentCell + 1) != check) { //if current cell isn't exceding total cells & if next cell isn't a corner
+			if (!_cells [_currentCell + 1].visited) {
+				neighbours [length] = _currentCell + 1;
 				connectingWall [length] = 3;
 				length++;
 			}
 		}
 
 		//south
-		if (currentCell - xSize >= 0) {
-			if (!cells [currentCell - xSize].visited) {
-				neighbours [length] = currentCell - xSize;
+		if (_currentCell - _xSize >= 0) {
+			if (!_cells [_currentCell - _xSize].visited) {
+				neighbours [length] = _currentCell - _xSize;
 				connectingWall [length] = 4;
 				length++;
 			}
@@ -224,30 +227,30 @@ public class MazeGenerator : MonoBehaviour
 
 		if (length != 0) {
 			int randomNeighbour = Random.Range (0, length);
-			currentNeighbour = neighbours [randomNeighbour];
-			wallToBreak = connectingWall [randomNeighbour];
+			_currentNeighbour = neighbours [randomNeighbour];
+			_wallToBreak = connectingWall [randomNeighbour];
 		} else {
-			if (backingUp > 0) {
-				currentCell = lastCells [backingUp];
-				backingUp--;
+			if (_backingUp > 0) {
+				_currentCell = _lastCells [_backingUp];
+				_backingUp--;
 			}
 		}
 	}
 
 	void BreakWall ()
 	{
-		switch (wallToBreak) {
-		case 1: Destroy (cells [currentCell].north); break;
-		case 2: Destroy (cells [currentCell].east);  break;
-		case 3: Destroy (cells [currentCell].west);  break;
-		case 4: Destroy (cells [currentCell].south); break;
+		switch (_wallToBreak) {
+		case 1: Destroy (_cells [_currentCell].north); break;
+		case 2: Destroy (_cells [_currentCell].east);  break;
+		case 3: Destroy (_cells [_currentCell].west);  break;
+		case 4: Destroy (_cells [_currentCell].south); break;
 		}
 	}
 
 	void VisitCell (int visitedCell)
 	{
-		cells [visitedCell].visited = true;
-		visitedCells++;
+		_cells [visitedCell].visited = true;
+		_visitedCells++;
 	}
 
 	public void ClearMaze(){
@@ -255,15 +258,15 @@ public class MazeGenerator : MonoBehaviour
 	}
 
 	void Preperation(){
-		xSize = _levelData.mapLength;
-		ySize = _levelData.mapWidth;
-		playerSpawnCellNumbers [0] = 0;
+		_xSize = _levelData.mapLength;
+		_ySize = _levelData.mapWidth;
+		_playerSpawnCellNumbers [0] = 0;
 		if (_levelData.GetPlayers == 2) { //2players
-			playerSpawnCellNumbers [1] = ySize * xSize - 1; //WWWWWWWWW
+			_playerSpawnCellNumbers [1] = _ySize * _xSize - 1; //WWWWWWWWW
 		} else {//4players
-			playerSpawnCellNumbers [1] = ySize -1;
-			playerSpawnCellNumbers [2] = ((ySize * xSize) - ySize);
-			playerSpawnCellNumbers [3] = ySize * xSize - 1;
+			_playerSpawnCellNumbers [1] = _ySize -1;
+			_playerSpawnCellNumbers [2] = ((_ySize * _xSize) - _ySize);
+			_playerSpawnCellNumbers [3] = _ySize * _xSize - 1;
 		}
 	}
 	void PoolPlayers(){
@@ -272,29 +275,29 @@ public class MazeGenerator : MonoBehaviour
 
 	void placeAndSetPlayers(){
 		if (_levelData.GetPlayers == 2) {
-			GameObject tempPlayer = Instantiate (_placeholderPlayers [0])as GameObject;
-			Vector3 spawnLocation = new Vector3(cells[playerSpawnCellNumbers[0]].west.transform.position.x - .5f,cells[playerSpawnCellNumbers[0]].west.transform.position.y,cells[playerSpawnCellNumbers[0]].west.transform.position.z);
+			GameObject tempPlayer = Instantiate (_players [0])as GameObject;
+			Vector3 spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[0]].west.transform.position.x - .5f,_cells[_playerSpawnCellNumbers[0]].west.transform.position.y,_cells[_playerSpawnCellNumbers[0]].west.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 
-			tempPlayer = Instantiate (_placeholderPlayers [1]) as GameObject;
-			spawnLocation = new Vector3(cells[playerSpawnCellNumbers[1]].east.transform.position.x + .5f,cells[playerSpawnCellNumbers[1]].east.transform.position.y,cells[playerSpawnCellNumbers[1]].east.transform.position.z);
+			tempPlayer = Instantiate (_players [1]) as GameObject;
+			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[1]].east.transform.position.x + .5f,_cells[_playerSpawnCellNumbers[1]].east.transform.position.y,_cells[_playerSpawnCellNumbers[1]].east.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 			Debug.Log("ech");
 		}else {
-			GameObject tempPlayer = Instantiate (_placeholderPlayers [0])as GameObject;
-			Vector3 spawnLocation = new Vector3(cells[playerSpawnCellNumbers[0]].west.transform.position.x - .5f,cells[playerSpawnCellNumbers[0]].west.transform.position.y,cells[playerSpawnCellNumbers[0]].west.transform.position.z);
+			GameObject tempPlayer = Instantiate (_players [0])as GameObject;
+			Vector3 spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[0]].west.transform.position.x - .5f,_cells[_playerSpawnCellNumbers[0]].west.transform.position.y,_cells[_playerSpawnCellNumbers[0]].west.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 
-			tempPlayer = Instantiate (_placeholderPlayers [1]) as GameObject;
-			spawnLocation = new Vector3(cells[playerSpawnCellNumbers[1]].east.transform.position.x + .5f,cells[playerSpawnCellNumbers[1]].east.transform.position.y,cells[playerSpawnCellNumbers[1]].east.transform.position.z);
+			tempPlayer = Instantiate (_players [1]) as GameObject;
+			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[1]].east.transform.position.x + .5f,_cells[_playerSpawnCellNumbers[1]].east.transform.position.y,_cells[_playerSpawnCellNumbers[1]].east.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 
-			tempPlayer = Instantiate (_placeholderPlayers [2])as GameObject;
-			spawnLocation = new Vector3(cells[playerSpawnCellNumbers[2]].west.transform.position.x - .5f,cells[playerSpawnCellNumbers[2]].west.transform.position.y,cells[playerSpawnCellNumbers[2]].west.transform.position.z);
+			tempPlayer = Instantiate (_players [2])as GameObject;
+			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[2]].west.transform.position.x - .5f,_cells[_playerSpawnCellNumbers[2]].west.transform.position.y,_cells[_playerSpawnCellNumbers[2]].west.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 
-			tempPlayer = Instantiate (_placeholderPlayers [3]) as GameObject;
-			spawnLocation = new Vector3(cells[playerSpawnCellNumbers[3]].east.transform.position.x + .5f,cells[playerSpawnCellNumbers[3]].east.transform.position.y,cells[playerSpawnCellNumbers[3]].east.transform.position.z);
+			tempPlayer = Instantiate (_players [3]) as GameObject;
+			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[3]].east.transform.position.x + .5f,_cells[_playerSpawnCellNumbers[3]].east.transform.position.y,_cells[_playerSpawnCellNumbers[3]].east.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 
 		}
