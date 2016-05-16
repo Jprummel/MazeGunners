@@ -15,7 +15,7 @@ public class CollisionHandler : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (this.tag == Tags.PLAYER && other.tag == Tags.BULLET)
+        /*if (this.tag == Tags.PLAYER && other.tag == Tags.BULLET)
         {
             //Die function here
         }
@@ -23,6 +23,6 @@ public class CollisionHandler : MonoBehaviour {
         if (this.tag == Tags.PLAYER && other.tag == Tags.PICKUP)
         {
             //Powerup function here
-        }
+        }*/
     }
 }

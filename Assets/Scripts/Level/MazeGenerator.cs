@@ -21,6 +21,9 @@ public class MazeGenerator : MonoBehaviour
 	[SerializeField]private float floorYOffset = .7f;
 	[SerializeField]private int xSize = 5;
 	[SerializeField]private int ySize = 5;
+	[SerializeField]private GameObject[] _players = new GameObject[4];
+
+	private int[] playerSpawnCellNumbers = new int[4];
 
 	private Vector3 initialPos;
 	private GameObject wallHolder;
@@ -37,10 +40,34 @@ public class MazeGenerator : MonoBehaviour
 
 	private List<int> lastCells;
 
+	//Importing settings from datahandler here!!!
+	private LevelData _levelData;
+	[SerializeField]private GameObject[] _placeholderPlayers = new GameObject[4];
+
 	// Use this for initialization
 	void Start ()
 	{
+		_levelData = GameObject.FindGameObjectWithTag ("LevelData").GetComponent<LevelData> ();
+		Preperation();
 		CreateWalls ();
+
+	}
+
+	void Update(){
+		if (Input.GetMouseButtonDown (0)) {
+			Destroy (wallHolder);
+			Destroy (floorHolder);
+			cells = null;
+			currentCell = 0;
+			totalCells = 0;
+			visitedCells = 0;
+			currentNeighbour = 0;
+			backingUp = 0;
+			wallToBreak = 0;
+			startedBuilding = false;
+			Preperation ();
+			CreateWalls ();
+		}
 	}
 
 	void CreateWalls ()
@@ -145,6 +172,7 @@ public class MazeGenerator : MonoBehaviour
 				startedBuilding = true;
 			}
 		}
+		placeAndSetPlayers ();
 	}
 
 	void GetNeighbour () // checks neighbouring cells
@@ -220,5 +248,56 @@ public class MazeGenerator : MonoBehaviour
 	{
 		cells [visitedCell].visited = true;
 		visitedCells++;
+	}
+
+	public void ClearMaze(){
+		CreateWalls ();
+	}
+
+	void Preperation(){
+		xSize = _levelData.mapLength;
+		ySize = _levelData.mapWidth;
+		playerSpawnCellNumbers [0] = 0;
+		if (_levelData.GetPlayers == 2) { //2players
+			playerSpawnCellNumbers [1] = ySize * xSize - 1; //WWWWWWWWW
+		} else {//4players
+			playerSpawnCellNumbers [1] = ySize -1;
+			playerSpawnCellNumbers [2] = ((ySize * xSize) - ySize);
+			playerSpawnCellNumbers [3] = ySize * xSize - 1;
+		}
+	}
+	void PoolPlayers(){
+
+	}
+
+	void placeAndSetPlayers(){
+		if (_levelData.GetPlayers == 2) {
+			GameObject tempPlayer = Instantiate (_placeholderPlayers [0])as GameObject;
+			Vector3 spawnLocation = new Vector3(cells[playerSpawnCellNumbers[0]].west.transform.position.x - .5f,cells[playerSpawnCellNumbers[0]].west.transform.position.y,cells[playerSpawnCellNumbers[0]].west.transform.position.z);
+			tempPlayer.transform.position = spawnLocation;
+
+			tempPlayer = Instantiate (_placeholderPlayers [1]) as GameObject;
+			spawnLocation = new Vector3(cells[playerSpawnCellNumbers[1]].east.transform.position.x + .5f,cells[playerSpawnCellNumbers[1]].east.transform.position.y,cells[playerSpawnCellNumbers[1]].east.transform.position.z);
+			tempPlayer.transform.position = spawnLocation;
+			Debug.Log("ech");
+		}else {
+			GameObject tempPlayer = Instantiate (_placeholderPlayers [0])as GameObject;
+			Vector3 spawnLocation = new Vector3(cells[playerSpawnCellNumbers[0]].west.transform.position.x - .5f,cells[playerSpawnCellNumbers[0]].west.transform.position.y,cells[playerSpawnCellNumbers[0]].west.transform.position.z);
+			tempPlayer.transform.position = spawnLocation;
+
+			tempPlayer = Instantiate (_placeholderPlayers [1]) as GameObject;
+			spawnLocation = new Vector3(cells[playerSpawnCellNumbers[1]].east.transform.position.x + .5f,cells[playerSpawnCellNumbers[1]].east.transform.position.y,cells[playerSpawnCellNumbers[1]].east.transform.position.z);
+			tempPlayer.transform.position = spawnLocation;
+
+			tempPlayer = Instantiate (_placeholderPlayers [2])as GameObject;
+			spawnLocation = new Vector3(cells[playerSpawnCellNumbers[2]].west.transform.position.x - .5f,cells[playerSpawnCellNumbers[2]].west.transform.position.y,cells[playerSpawnCellNumbers[2]].west.transform.position.z);
+			tempPlayer.transform.position = spawnLocation;
+
+			tempPlayer = Instantiate (_placeholderPlayers [3]) as GameObject;
+			spawnLocation = new Vector3(cells[playerSpawnCellNumbers[3]].east.transform.position.x + .5f,cells[playerSpawnCellNumbers[3]].east.transform.position.y,cells[playerSpawnCellNumbers[3]].east.transform.position.z);
+			tempPlayer.transform.position = spawnLocation;
+
+		}
+
 	}
 }

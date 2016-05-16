@@ -8,7 +8,7 @@ public class PlayerCollisions : MonoBehaviour {
 
     void Start()
     {
-        _roundData = GameObject.Find("PlayerChecker").GetComponent<RoundData>();
+       // _roundData = GameObject.Find("PlayerChecker").GetComponent<RoundData>();
     }
 
     void OnCollisionEnter(Collision coll)
