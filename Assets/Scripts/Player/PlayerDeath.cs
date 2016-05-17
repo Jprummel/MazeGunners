@@ -29,8 +29,8 @@ public class PlayerDeath : MonoBehaviour {
     {
         if (_isActive)
         {
-            _isActive = false;
             StartCoroutine(DeathAnimation());
+            _isActive = false;            
         }
     }
 

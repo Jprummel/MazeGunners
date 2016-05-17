@@ -19,8 +19,9 @@ public class HitScanWeapon : MonoBehaviour
 
     public void Shoot()
     {
-        if (Physics.Raycast(_raycastOriginMuzzle.transform.position, _shootDirection, _gunRange) && _playerDeath.IsActive == true)
+        if (Physics.Raycast(_raycastOriginMuzzle.transform.position, _shootDirection, out _hit, _gunRange) && _playerDeath.IsActive == true)
         {
+            Debug.Log("Allahu Akbar");
             _hit.transform.SendMessage("Kill", SendMessageOptions.DontRequireReceiver); //Call the method Kill() in the gameobject that is hit
             GameObject muzzleFlash = ObjectPool.instance.GetObjectForType(ObjectPoolNames.MUZZLEFLASH, false);
             muzzleFlash.transform.position = _raycastOriginMuzzle.transform.position;
