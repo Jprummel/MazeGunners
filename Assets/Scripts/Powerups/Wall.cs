@@ -14,7 +14,7 @@ public class Wall : MonoBehaviour {
     void ClearWall()
     {
         gameObject.layer = 8;
-        _transparantWall = ObjectPool.instance.GetObjectForType(Tags.TRANSPARANTWALL, false);
+        _transparantWall = ObjectPool.instance.GetObjectForType(ObjectPoolNames.TRANSPARANTWALL, false);
         _transparantWall.transform.position = transform.position;
     }
 

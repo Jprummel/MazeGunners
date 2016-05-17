@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.SendMessage("ApplyDamage", _dmg,SendMessageOptions.DontRequireReceiver);
-            GameObject hitEffect = ObjectPool.instance.GetObjectForType(Tags.HITEFFECT, false);
+            GameObject hitEffect = ObjectPool.instance.GetObjectForType(ObjectPoolNames.HITEFFECT, false);
             hitEffect.transform.position = transform.position;
         }
         _objectPoolScript.PoolObject(this.gameObject);
