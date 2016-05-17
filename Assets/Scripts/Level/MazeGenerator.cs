@@ -52,15 +52,10 @@ public class MazeGenerator : MonoBehaviour
 		CreateWalls ();
 
 	}
-
-	void Update(){
-		if (Input.GetMouseButtonDown (0)) {
-			ReGenerate ();
-		}
-	}
 	public void ReGenerate(){
 		Destroy (_wallHolder);
 		Destroy (_floorHolder);
+		FindAndPoolPlayers ();
 		_cells = null;
 		_currentCell = 0;
 		_totalCells = 0;
@@ -104,7 +99,6 @@ public class MazeGenerator : MonoBehaviour
 				tempWall.transform.parent = _wallHolder.transform;
 			}
 		}
-		//CreateFloor ();
 		CreateCells ();
 	}
 
@@ -112,7 +106,6 @@ public class MazeGenerator : MonoBehaviour
 	{
 		Vector3 currentPosition = new Vector3(0, -_floorYOffset, -_wallLength / 2);
 		GameObject floor = Instantiate (_floors [0], currentPosition, Quaternion.identity) as GameObject;
-		//floor.transform.localScale = new Vector3 (xSize * wallLength, floor.transform.localScale.y, ySize * wallLength);
 	}
 
 	void CreateCells ()
@@ -269,38 +262,53 @@ public class MazeGenerator : MonoBehaviour
 			_playerSpawnCellNumbers [3] = _ySize * _xSize - 1;
 		}
 	}
-	void PoolPlayers(){
-
-	}
 
 	void placeAndSetPlayers(){
+		GameObject tempPlayer;
 		if (_levelData.GetPlayers == 2) {
-			GameObject tempPlayer = Instantiate (_players [0])as GameObject;
+			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER1,true);
 			Vector3 spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[0]].west.transform.position.x - .5f,_cells[_playerSpawnCellNumbers[0]].west.transform.position.y,_cells[_playerSpawnCellNumbers[0]].west.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 
-			tempPlayer = Instantiate (_players [1]) as GameObject;
+			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER2,true);
 			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[1]].east.transform.position.x + .5f,_cells[_playerSpawnCellNumbers[1]].east.transform.position.y,_cells[_playerSpawnCellNumbers[1]].east.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 			Debug.Log("ech");
 		}else {
-			GameObject tempPlayer = Instantiate (_players [0])as GameObject;
+			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER1,true);
 			Vector3 spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[0]].west.transform.position.x - .5f,_cells[_playerSpawnCellNumbers[0]].west.transform.position.y,_cells[_playerSpawnCellNumbers[0]].west.transform.position.z);
-			tempPlayer.transform.position = spawnLocation;
-
-			tempPlayer = Instantiate (_players [1]) as GameObject;
+			if (tempPlayer != null) {
+				tempPlayer.transform.position = spawnLocation;
+			}
+			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER2,true);
 			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[1]].east.transform.position.x + .5f,_cells[_playerSpawnCellNumbers[1]].east.transform.position.y,_cells[_playerSpawnCellNumbers[1]].east.transform.position.z);
-			tempPlayer.transform.position = spawnLocation;
-
-			tempPlayer = Instantiate (_players [2])as GameObject;
+			if (tempPlayer != null) {
+				tempPlayer.transform.position = spawnLocation;
+			}
+			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER3,true);
 			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[2]].west.transform.position.x - .5f,_cells[_playerSpawnCellNumbers[2]].west.transform.position.y,_cells[_playerSpawnCellNumbers[2]].west.transform.position.z);
-			tempPlayer.transform.position = spawnLocation;
-
-			tempPlayer = Instantiate (_players [3]) as GameObject;
+			if (tempPlayer != null) {
+				tempPlayer.transform.position = spawnLocation;
+			}
+			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER4,true);
 			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[3]].east.transform.position.x + .5f,_cells[_playerSpawnCellNumbers[3]].east.transform.position.y,_cells[_playerSpawnCellNumbers[3]].east.transform.position.z);
-			tempPlayer.transform.position = spawnLocation;
-
+			if (tempPlayer != null) {
+				tempPlayer.transform.position = spawnLocation;
+			}
 		}
 
+	}
+
+	void FindAndPoolPlayers(){
+		_players [0] = GameObject.FindGameObjectWithTag (ObjectPoolNames.PLAYER1);
+		_players [1] = GameObject.FindGameObjectWithTag (ObjectPoolNames.PLAYER2);
+		_players [2] = GameObject.FindGameObjectWithTag (ObjectPoolNames.PLAYER3);
+		_players [3] = GameObject.FindGameObjectWithTag (ObjectPoolNames.PLAYER4);
+
+		for (int i = 0; i < _players.Length; i++) {
+			if (_players [i] != null) {
+				_players [i].GetComponent<PlayerDeath> ().FastKill ();
+			}
+		}
 	}
 }

@@ -8,4 +8,5 @@ public class Tags : MonoBehaviour {
     public const string WALL            = "Wall";
 	public const string LEVELDATA       = "LevelData";
     public const string ROUNDDATA       = "RoundDataObject";
+	public const string GENERATOR       = "Generator";
 }

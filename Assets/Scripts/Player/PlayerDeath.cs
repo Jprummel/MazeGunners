@@ -17,7 +17,7 @@ public class PlayerDeath : MonoBehaviour {
 
     void Start()
     {
-        _roundData = GameObject.Find(Tags.ROUNDDATA).GetComponent<RoundData>();
+		_roundData = GameObject.FindGameObjectWithTag(Tags.ROUNDDATA).GetComponent<RoundData>();
     }
 
     void OnEnable()
@@ -25,7 +25,7 @@ public class PlayerDeath : MonoBehaviour {
         _isActive = true;
     }
 
-	void Kill()
+	public void Kill()
     {
         if (_isActive)
         {
@@ -33,6 +33,15 @@ public class PlayerDeath : MonoBehaviour {
             _isActive = false;            
         }
     }
+
+	public void FastKill(){
+		if (_isActive)
+		{
+			_isActive = false;            
+			_roundData.Remove(this.gameObject);
+			ObjectPool.instance.PoolObject(this.gameObject);
+		}
+	}
 
     IEnumerator DeathAnimation()
     {
