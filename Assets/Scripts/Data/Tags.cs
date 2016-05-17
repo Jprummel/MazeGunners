@@ -7,5 +7,5 @@ public class Tags : MonoBehaviour {
     public const string OBJECTPOOL      = "ObjectPool";
     public const string WALL            = "Wall";
 	public const string LEVELDATA       = "LevelData";
-
+    public const string ROUNDDATA       = "RoundDataObject";
 }

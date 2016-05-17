@@ -111,11 +111,11 @@ public class PlayerInputs : MonoBehaviour {
         //BUMPERS
         if (Input.GetButton(InputAxes.LB + _playerNumberString))
         {
-            _switchWeapon.PreviousWeapon();
+            //_switchWeapon.PreviousWeapon();
         }
         if (Input.GetButtonDown(InputAxes.RB + _playerNumberString))
         {
-            _switchWeapon.NextWeapon();
+            //_switchWeapon.NextWeapon();
         }
 
         //TRIGGERS

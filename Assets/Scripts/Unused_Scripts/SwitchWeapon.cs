@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SwitchWeapon : MonoBehaviour {
 
-    private IWeapon _currentWeapon;
+    /*private IWeapon _currentWeapon;
     public IWeapon CurrentWeapon
     {
         get
@@ -64,7 +64,7 @@ public class SwitchWeapon : MonoBehaviour {
         _currentWeaponIndex--;
     }
 
-    /*public void ShootWeapon()
+    public void ShootWeapon()
     {
         _currentWeapon.Shoot();
     }*/

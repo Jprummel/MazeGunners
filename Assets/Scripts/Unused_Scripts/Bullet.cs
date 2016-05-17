@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]private float _speed;
+    /*[SerializeField]private float _speed;
     [SerializeField]private float _maxLifeTime;
     [SerializeField]private float _dmg = 1f;
     private float _lifeTime;
@@ -19,13 +19,6 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * _speed * Time.deltaTime);
-        /*float delta = Time.deltaTime;
-        transform.Translate(Vector3.forward * _speed * delta);
-        _lifeTime += delta;
-        if (_lifeTime > _maxLifeTime)
-        {
-            Destroy(this.gameObject);
-        }*/
     }
 
     void OnTriggerEnter(Collider other)
@@ -43,6 +36,5 @@ public class Bullet : MonoBehaviour
     {
         yield return new WaitForSeconds(_maxLifeTime);
         ObjectPool.instance.PoolObject(this.gameObject);
-        //Destroy(this.gameObject);
-    }
+    }*/
 }

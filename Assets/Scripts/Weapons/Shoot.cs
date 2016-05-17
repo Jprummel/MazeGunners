@@ -4,28 +4,25 @@ using System.Collections;
 public class Shoot : MonoBehaviour {
 
     private bool _isReloading;
-    private SwitchWeapon _switchWeapon;
+    private HitScanWeapon _hitScanWeapon;
 
 	// Use this for initialization
 	void Start () 
     {
-        _switchWeapon = GetComponent<SwitchWeapon>();
+        _hitScanWeapon = GetComponent<HitScanWeapon>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-	    /*if(Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }*/
+	    
 	}
 
     public void ShootWeapon()
     {
         if (_isReloading == false)
         {
-            _switchWeapon.CurrentWeapon.Shoot();
+            _hitScanWeapon.Shoot();
             StartCoroutine(Reload());
         }
     }
@@ -33,7 +30,7 @@ public class Shoot : MonoBehaviour {
     IEnumerator Reload()
     {
         _isReloading = true;
-        yield return new WaitForSeconds(_switchWeapon.CurrentWeapon.Reload());
+        yield return new WaitForSeconds(_hitScanWeapon.Reload());
         _isReloading = false;
     }
 

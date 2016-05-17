@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ProjectileWeapon : MonoBehaviour, IWeapon
+public class ProjectileWeapon : MonoBehaviour
 {
 
-    [SerializeField]private Transform _muzzle; //shoots from here
+    /*[SerializeField]private Transform _muzzle; //shoots from here
     private float _randomAngle;
     private float _randomBounds = 1.5f;
     private float _reloadTime = 1;
@@ -18,10 +18,7 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
 	// Update is called once per frame
 	void Update () 
     {
-        /*if(Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }*/
+        
 	}
 
     public void Shoot()
@@ -41,5 +38,5 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
     public float Reload()
     {
         return _reloadTime;
-    }
+    }*/
 }

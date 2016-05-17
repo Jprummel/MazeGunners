@@ -6,7 +6,7 @@ public class SoundEffects : MonoBehaviour {
     public delegate void SoundEffect();
     public static event SoundEffect playSound;
 
-    public AudioClip[] soundEffects;
+    [SerializeField]private AudioClip[] soundEffects;
     private AudioSource _audio;
 	// Use this for initialization
 	void Start () {
