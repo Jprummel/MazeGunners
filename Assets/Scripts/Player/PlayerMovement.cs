@@ -7,15 +7,19 @@ public class PlayerMovement : MonoBehaviour {
                     private CharacterController _charController;
                     private Transform           _playerArms;
     [SerializeField]private Transform           _camera;
+                    private bool                _isBoosting = false;
                     private float               _rotationX;
                     private float               _rotationY;
     [SerializeField]private float               _minY, _maxY;
                     private float               _speedUpAmount = 5;
+                    private float               _speedBoostDuration = 3;
+                    private float               _oldMoveSpeed;
 
 	void Start () 
     {
         _playerArms = transform.Find("PlayerContainer/PlayerArms");
         _charController = GetComponent<CharacterController>();
+        _oldMoveSpeed = _moveSpeed;
 	}
 
     void Update()
@@ -65,10 +69,19 @@ public class PlayerMovement : MonoBehaviour {
 
     void SpeedUp()
     {
-        if (_moveSpeed < (_moveSpeed + _speedUpAmount))
+        if (_moveSpeed < (_moveSpeed + _speedUpAmount) && _isBoosting == false)
         {
             _moveSpeed += _speedUpAmount;
+            _isBoosting = true;
+            StartCoroutine(SpeedBoostDelay());
         }
+    }
+
+    IEnumerator SpeedBoostDelay()
+    {
+        yield return new WaitForSeconds(_speedBoostDuration);
+        _moveSpeed = _oldMoveSpeed;
+        _isBoosting = false;
     }
 
 }
