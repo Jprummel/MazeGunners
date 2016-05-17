@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
                     private float               _rotationY;
     [SerializeField]private float               _minY, _maxY;
                     private float               _speedUpAmount = 5;
+	[SerializeField]private float 				_cameraSensitivity = 150;
 
 	void Start () 
     {
@@ -43,15 +44,15 @@ public class PlayerMovement : MonoBehaviour {
         _charController.Move(moveDirection *_moveSpeed * Time.deltaTime);
     }
 
-    public void RotateX(float rotationSpeed, float value)
+    public void RotateX(float value)
     {
-        _rotationX += Time.deltaTime * rotationSpeed * value;
+		_rotationX += (Time.deltaTime * _cameraSensitivity) * value;
     }
 
-    public void RotateY(float camSensitivity, float value)
+    public void RotateY(float value)
     {
-        _rotationY += Time.deltaTime * camSensitivity * value;
-        _rotationY = Mathf.Clamp(_rotationY, -30, 70);
+		_rotationY += (Time.deltaTime * _cameraSensitivity) * value;
+        _rotationY = Mathf.Clamp(_rotationY, -80, 89);
     }
 
     void UpdateRotation()
