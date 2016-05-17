@@ -11,27 +11,39 @@ public class RoundData : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _players = new List<GameObject>();
+
+        RoundStart();
+
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
         {
             _players.Add(player);
         }
-
-        Debug.Log(_players);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
 	}
 
     public void Remove(GameObject player)
     {
         _players.Remove(player);
-        Debug.Log(_players[0].name);
         if (_players.Count == 1)
         {
             RoundEnd();
-            Debug.Log(_players[0].name);
+            StartCoroutine(GoToNextRound(1.5f));
+        }
+    }
+
+    void RoundStart()
+    {
+        _players.Clear();
+
+        if (GameObject.Find("Player 1") && GameObject.Find("Player 2") != null)
+        {
+            _players.Add(GameObject.Find("Player 1"));
+            _players.Add(GameObject.Find("Player 2"));
+        }
+        
+        if (GameObject.Find("Player 3") && GameObject.Find("Player 4") != null)
+        {
+            _players.Add(GameObject.Find("Player 3"));
+            _players.Add(GameObject.Find("Player 4"));
         }
     }
 
@@ -42,7 +54,11 @@ public class RoundData : MonoBehaviour {
 
     IEnumerator GoToNextRound(float waitTime)
     {
-        
+        _RoundEndText.text = _players[0].name + " Wins!";        
         yield return new WaitForSeconds(waitTime);
+        _RoundEndText.text = "Get ready for the next round";
+        yield return new WaitForSeconds(waitTime);
+        _RoundEndText.text = "";
+        RoundStart();
     }
 }
