@@ -29,10 +29,10 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
         _randomAngle = Random.Range(-_randomBounds, _randomBounds);
         Quaternion rotation = Quaternion.Euler(Vector3.up * _muzzle.transform.rotation.eulerAngles.y);
 
-        GameObject muzzleFlash = ObjectPool.instance.GetObjectForType(Tags.MUZZLEFLASH, false);
+        GameObject muzzleFlash = ObjectPool.instance.GetObjectForType(ObjectPoolNames.MUZZLEFLASH, false);
         muzzleFlash.transform.position = _muzzle.transform.position;
 
-        GameObject bullet = ObjectPool.instance.GetObjectForType(Tags.BULLET, false);
+        GameObject bullet = ObjectPool.instance.GetObjectForType(ObjectPoolNames.BULLET, false);
         bullet.transform.position = _muzzle.transform.position;
         bullet.transform.rotation = rotation;
         bullet.transform.Rotate(_randomAngle, _randomAngle, 0);
