@@ -6,13 +6,11 @@ public class PlayerInputs : MonoBehaviour {
     [SerializeField]private int             _playerNumber;
                     private PauseGame       _pause;
                     private PlayerMovement  _movement;
-                    private SwitchWeapon    _switchWeapon;
                     private Shoot           _shoot;
     void Start()
     {
         _pause          = GetComponent<PauseGame>();
         _movement       = GetComponent<PlayerMovement>();
-        _switchWeapon   = GetComponent<SwitchWeapon>();
         _shoot          = GetComponent<Shoot>();
     }
 
