@@ -76,6 +76,9 @@ public class ObjectPool : MonoBehaviour
     /// <summary>
     /// The container object that we will keep unused pooled objects so we dont clog up the editor with objects.
     /// </summary>
+    /// use: GameObject obj = ObjectPool.instance.GetObjectForType(ObjectName, True/False)); 
+    /// to take objects from pool. True to limit objectpool to spawned objects, false to not limit the pool
+    /// use: ObjectPool.instance.PoolObject(ObjectName); to put objects back into pool
     private GameObject _containerObject;
 
     void OnEnable()

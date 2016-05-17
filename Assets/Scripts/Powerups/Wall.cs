@@ -4,12 +4,6 @@ using System.Collections;
 public class Wall : MonoBehaviour {
 
     private GameObject _transparantWall;
-    private ObjectPool _objectPoolScript;
-
-    void Start()
-    {
-        _objectPoolScript = GameObject.FindWithTag(Tags.OBJECTPOOL).GetComponent<ObjectPool>();
-    }
 
     void ClearWall()
     {
@@ -21,6 +15,6 @@ public class Wall : MonoBehaviour {
     void OpaqueWall()
     {
         gameObject.layer = 0;
-        _objectPoolScript.PoolObject(_transparantWall);
+        ObjectPool.instance.PoolObject(_transparantWall);
     }
 }

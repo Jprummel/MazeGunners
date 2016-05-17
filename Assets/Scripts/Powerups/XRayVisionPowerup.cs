@@ -32,12 +32,12 @@ public class XRayVisionPowerup: MonoBehaviour
 
     void OnEnable()
     {
-        Pickup.OnPickup += ActivateXRay;
+        XRayVisionPickup.OnPickup += ActivateXRay;
     }
 
     void OnDisable()
     {
-        Pickup.OnPickup -= ActivateXRay;
+        XRayVisionPickup.OnPickup -= ActivateXRay;
     }
 
     void LookForWall()

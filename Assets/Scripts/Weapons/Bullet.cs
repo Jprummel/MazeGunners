@@ -7,14 +7,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]private float _maxLifeTime;
     [SerializeField]private float _dmg = 1f;
     private float _lifeTime;
-    private ObjectPool _objectPoolScript;
 
     //[SerializeField]private GameObject _explosionPrefab;
-
-    void Start()
-    {
-        _objectPoolScript = GameObject.FindWithTag(Tags.OBJECTPOOL).GetComponent<ObjectPool>();
-    }
 
     void OnEnable()
     {
@@ -42,13 +36,13 @@ public class Bullet : MonoBehaviour
             GameObject hitEffect = ObjectPool.instance.GetObjectForType(ObjectPoolNames.HITEFFECT, false);
             hitEffect.transform.position = transform.position;
         }
-        _objectPoolScript.PoolObject(this.gameObject);
+        ObjectPool.instance.PoolObject(this.gameObject);
     }
 
     IEnumerator DestructionDelay()
     {
         yield return new WaitForSeconds(_maxLifeTime);
-        _objectPoolScript.PoolObject(this.gameObject);
+        ObjectPool.instance.PoolObject(this.gameObject);
         //Destroy(this.gameObject);
     }
 }

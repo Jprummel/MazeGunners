@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pickup : MonoBehaviour {
+public class XRayVisionPickup : MonoBehaviour {
 
     public delegate void PickupAction();
     public static event PickupAction OnPickup;
 
-    void XRayVisionPickup()
+    void PickUp()
     {
         if (OnPickup != null)
         {

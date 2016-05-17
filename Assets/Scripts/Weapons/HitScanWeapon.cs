@@ -19,7 +19,7 @@ public class HitScanWeapon : MonoBehaviour, IWeapon
     {
         if (Physics.Raycast(_muzzle.transform.position, _shootDirection, _gunRange))
         {
-            _hit.transform.SendMessage("ApplyDamage", _damage, SendMessageOptions.DontRequireReceiver); //Call the method Apply Damage in the gameobject that is hit
+            _hit.transform.SendMessage("Kill", _damage, SendMessageOptions.DontRequireReceiver); //Call the method Apply Damage in the gameobject that is hit
             GameObject muzzleFlash = ObjectPool.instance.GetObjectForType(ObjectPoolNames.MUZZLEFLASH, false);
             muzzleFlash.transform.position = _muzzle.transform.position;
 
