@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
                     private float               _oldMoveSpeed;
 	void Start () 
     {
-        _playerArms = transform.Find("PlayerContainer/PlayerArms");
+        _playerArms = transform.Find("PlayerContainer/Heavyrat/pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine");
         _charController = GetComponent<CharacterController>();
         _oldMoveSpeed = _moveSpeed;
 	}
