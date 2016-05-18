@@ -138,6 +138,7 @@ ModelImporter:
     7400012: StrafeLeft
     7400014: StrafeRight
     7400016: Die
+    7400018: Tailswipe
     9500000: //RootNode
     13700000: Gun
     13700002: Heavyrat
@@ -1199,6 +1200,157 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Gun
+        weight: 1
+      - path: Heavyrat
+        weight: 1
+      - path: pasted__Character2_Reference
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/joint1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/joint1/joint2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/joint1/joint2/joint3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/joint1/joint2/joint3/joint4
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_LeftUpLeg
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_LeftUpLeg/pasted__Character2_LeftLeg
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_LeftUpLeg/pasted__Character2_LeftLeg/pasted__Character2_LeftFoot
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_LeftUpLeg/pasted__Character2_LeftLeg/pasted__Character2_LeftFoot/pasted__Character2_LeftToeBase
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_RightUpLeg
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_RightUpLeg/pasted__Character2_RightLeg
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_RightUpLeg/pasted__Character2_RightLeg/pasted__Character2_RightFoot
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_RightUpLeg/pasted__Character2_RightLeg/pasted__Character2_RightFoot/pasted__Character2_RightToeBase
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandIndex1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandIndex1/pasted__Character2_LeftHandIndex2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandIndex1/pasted__Character2_LeftHandIndex2/pasted__Character2_LeftHandIndex3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandMiddle1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandMiddle1/pasted__Character2_LeftHandMiddle2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandMiddle1/pasted__Character2_LeftHandMiddle2/pasted__Character2_LeftHandMiddle3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandPinky1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandPinky1/pasted__Character2_LeftHandPinky2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandPinky1/pasted__Character2_LeftHandPinky2/pasted__Character2_LeftHandPinky3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandRing1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandRing1/pasted__Character2_LeftHandRing2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandRing1/pasted__Character2_LeftHandRing2/pasted__Character2_LeftHandRing3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandThumb1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandThumb1/pasted__Character2_LeftHandThumb2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_LeftShoulder/pasted__Character2_LeftArm/pasted__Character2_LeftForeArm/pasted__Character2_LeftHand/pasted__Character2_LeftHandThumb1/pasted__Character2_LeftHandThumb2/pasted__Character2_LeftHandThumb3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_Neck
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_Neck/pasted__Character2_Head
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/Gun
+          1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandIndex1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandIndex1/pasted__Character2_RightHandIndex2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandIndex1/pasted__Character2_RightHandIndex2/pasted__Character2_RightHandIndex3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandMiddle1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandMiddle1/pasted__Character2_RightHandMiddle2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandMiddle1/pasted__Character2_RightHandMiddle2/pasted__Character2_RightHandMiddle3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandPinky1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandPinky1/pasted__Character2_RightHandPinky2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandPinky1/pasted__Character2_RightHandPinky2/pasted__Character2_RightHandPinky3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandRing1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandRing1/pasted__Character2_RightHandRing2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandRing1/pasted__Character2_RightHandRing2/pasted__Character2_RightHandRing3
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandThumb1
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandThumb1/pasted__Character2_RightHandThumb2
+        weight: 1
+      - path: pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine/pasted__Character2_Spine1/pasted__Character2_Spine2/pasted__Character2_RightShoulder/pasted__Character2_RightArm/pasted__Character2_RightForeArm/pasted__Character2_RightHand/pasted__Character2_RightHandThumb1/pasted__Character2_RightHandThumb2/pasted__Character2_RightHandThumb3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Tailswipe
+      takeName: Take 001
+      firstFrame: 520
+      lastFrame: 640
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
