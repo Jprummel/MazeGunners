@@ -5,18 +5,31 @@ public class Shoot : MonoBehaviour {
 
     private bool _isReloading;
     private HitScanWeapon _hitScanWeapon;
+    private float _reloadTime = 5;
+    public float ReloadTime
+    {
+        get
+        {
+            return _reloadTime;
+        }
+    }
+    private float _oldReloadTime;
 
 	// Use this for initialization
 	void Start () 
     {
         _hitScanWeapon = GetComponent<HitScanWeapon>();
+        _oldReloadTime = _reloadTime;
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	/*void Update () 
     {
-	    
-	}
+	    if(Input.GetMouseButtonDown(0))
+        {
+            ShootWeapon();
+        }
+	}*/
 
     public void ShootWeapon()
     {
@@ -30,8 +43,14 @@ public class Shoot : MonoBehaviour {
     IEnumerator Reload()
     {
         _isReloading = true;
-        yield return new WaitForSeconds(_hitScanWeapon.Reload());
+        _reloadTime = 0;
+        while (_isReloading && _reloadTime < 5)
+        {
+            yield return new WaitForSeconds(1);
+            _reloadTime += 1;
+        }
         _isReloading = false;
+        _reloadTime = _oldReloadTime;
     }
 
 }

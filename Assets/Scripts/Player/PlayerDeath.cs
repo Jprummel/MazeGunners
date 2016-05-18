@@ -22,25 +22,21 @@ public class PlayerDeath : MonoBehaviour {
 
     void OnEnable()
     {
-        Debug.Log("Enabled");
         _isActive = true;
     }
 
-	public void Kill()
+	public void Death()
     {
-        Debug.Log("Kill");
         if (_isActive)
         {
-            Debug.Log("1");
             StartCoroutine(DeathAnimation());
-            _isActive = false;            
+            _isActive = false;
         }
     }
 
 	public void FastKill(){
 		if (_isActive)
 		{
-            Debug.Log("2");
 			_isActive = false;            
 			_roundData.Remove(this.gameObject);
 			ObjectPool.instance.PoolObject(this.gameObject);
@@ -49,7 +45,6 @@ public class PlayerDeath : MonoBehaviour {
 
     IEnumerator DeathAnimation()
     {
-        Debug.Log("Deathanimation");
         yield return new WaitForSeconds(_deathDelay);
         _roundData.Remove(this.gameObject);
         ObjectPool.instance.PoolObject(this.gameObject);

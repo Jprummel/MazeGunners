@@ -4,6 +4,13 @@ using System.Collections;
 public class PlayerInputs : MonoBehaviour {
 
     [SerializeField]private int             _playerNumber;
+                    public  int             PlayerNumber
+                    {
+                        get
+                        {
+                            return _playerNumber;
+                        }
+                    }
                     private PauseGame       _pause;
                     private PlayerMovement  _movement;
                     private Shoot           _shoot;
