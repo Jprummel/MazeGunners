@@ -14,6 +14,7 @@ public class Shoot : MonoBehaviour {
         }
     }
     private float _oldReloadTime;
+    private float _fillSpeed = 0.1f;
 
 	// Use this for initialization
 	void Start () 
@@ -23,13 +24,13 @@ public class Shoot : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	/*void Update () 
+	void Update () 
     {
 	    if(Input.GetMouseButtonDown(0))
         {
             ShootWeapon();
         }
-	}*/
+	}
 
     public void ShootWeapon()
     {
@@ -46,8 +47,8 @@ public class Shoot : MonoBehaviour {
         _reloadTime = 0;
         while (_isReloading && _reloadTime < 5)
         {
-            yield return new WaitForSeconds(1);
-            _reloadTime += 1;
+            yield return new WaitForSeconds(_fillSpeed);
+            _reloadTime += _fillSpeed;
         }
         _isReloading = false;
         _reloadTime = _oldReloadTime;
