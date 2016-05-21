@@ -16,19 +16,24 @@ public class Shoot : MonoBehaviour {
     private float _oldReloadTime;
     private float _fillSpeed = 0.1f;
 
+    private Animator _animator;//<---- subject to removal
+
 	// Use this for initialization
 	void Start () 
     {
         _hitScanWeapon = GetComponent<HitScanWeapon>();
         _oldReloadTime = _reloadTime;
+
+        _animator = GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
-	void Update () 
+    void Update() //<--- subject to removal
     {
 	    if(Input.GetMouseButtonDown(0))
         {
             ShootWeapon();
+            _animator.Play("Shoot", 1);
         }
 	}
 
