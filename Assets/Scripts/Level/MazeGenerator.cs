@@ -267,31 +267,31 @@ public class MazeGenerator : MonoBehaviour
 		GameObject tempPlayer;
 		if (_levelData.GetPlayers == 2) {
 			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER1,true);
-			Vector3 spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[0]].west.transform.position.x - .5f,_cells[_playerSpawnCellNumbers[0]].west.transform.position.y,_cells[_playerSpawnCellNumbers[0]].west.transform.position.z);
+			Vector3 spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[0]].west.transform.position.x - .5f,-0.5f,_cells[_playerSpawnCellNumbers[0]].west.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 
 			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER2,true);
-			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[1]].east.transform.position.x + .5f,_cells[_playerSpawnCellNumbers[1]].east.transform.position.y,_cells[_playerSpawnCellNumbers[1]].east.transform.position.z);
+			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[1]].east.transform.position.x + .5f,-0.5f,_cells[_playerSpawnCellNumbers[1]].east.transform.position.z);
 			tempPlayer.transform.position = spawnLocation;
 			Debug.Log("ech");
 		}else {
 			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER1,true);
-			Vector3 spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[0]].west.transform.position.x - .5f,_cells[_playerSpawnCellNumbers[0]].west.transform.position.y,_cells[_playerSpawnCellNumbers[0]].west.transform.position.z);
+			Vector3 spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[0]].west.transform.position.x - .5f,-0.5f,_cells[_playerSpawnCellNumbers[0]].west.transform.position.z);
 			if (tempPlayer != null) {
 				tempPlayer.transform.position = spawnLocation;
 			}
 			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER2,true);
-			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[1]].east.transform.position.x + .5f,_cells[_playerSpawnCellNumbers[1]].east.transform.position.y,_cells[_playerSpawnCellNumbers[1]].east.transform.position.z);
+			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[1]].east.transform.position.x + .5f,-0.5f,_cells[_playerSpawnCellNumbers[1]].east.transform.position.z);
 			if (tempPlayer != null) {
 				tempPlayer.transform.position = spawnLocation;
 			}
 			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER3,true);
-			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[2]].west.transform.position.x - .5f,_cells[_playerSpawnCellNumbers[2]].west.transform.position.y,_cells[_playerSpawnCellNumbers[2]].west.transform.position.z);
+			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[2]].west.transform.position.x - .5f,-0.5f,_cells[_playerSpawnCellNumbers[2]].west.transform.position.z);
 			if (tempPlayer != null) {
 				tempPlayer.transform.position = spawnLocation;
 			}
 			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER4,true);
-			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[3]].east.transform.position.x + .5f,_cells[_playerSpawnCellNumbers[3]].east.transform.position.y,_cells[_playerSpawnCellNumbers[3]].east.transform.position.z);
+			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[3]].east.transform.position.x + .5f,-0.5f,_cells[_playerSpawnCellNumbers[3]].east.transform.position.z);
 			if (tempPlayer != null) {
 				tempPlayer.transform.position = spawnLocation;
 			}
