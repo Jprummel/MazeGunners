@@ -5,6 +5,7 @@ public class Shoot : MonoBehaviour {
 
     private bool _isReloading;
     private HitScanWeapon _hitScanWeapon;
+    private Animator _animator;
     private float _reloadTime = 5;
     public float ReloadTime
     {
@@ -15,8 +16,6 @@ public class Shoot : MonoBehaviour {
     }
     private float _oldReloadTime;
     private float _fillSpeed = 0.1f;
-
-    private Animator _animator;//<---- subject to removal
 
 	// Use this for initialization
 	void Start () 
@@ -33,7 +32,12 @@ public class Shoot : MonoBehaviour {
 	    if(Input.GetMouseButtonDown(0))
         {
             ShootWeapon();
-            _animator.Play("Shoot", 1);
+            _animator.SetBool("isMovingForward", true);
+        }
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            _animator.SetBool("isMovingForward", false);
         }
 	}
 
@@ -41,6 +45,7 @@ public class Shoot : MonoBehaviour {
     {
         if (_isReloading == false)
         {
+            _animator.Play("Shoot", 1);
             _hitScanWeapon.Shoot();
             StartCoroutine(Reload());
         }

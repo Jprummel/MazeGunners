@@ -14,11 +14,13 @@ public class PlayerInputs : MonoBehaviour {
                     private PauseGame       _pause;
                     private PlayerMovement  _movement;
                     private Shoot           _shoot;
+                    private Animator        _animator;
     void Start()
     {
         _pause          = GetComponent<PauseGame>();
         _movement       = GetComponent<PlayerMovement>();
         _shoot          = GetComponent<Shoot>();
+        _animator       = GetComponentInChildren<Animator>();
     }
 
 	void Update () {
@@ -65,6 +67,161 @@ public class PlayerInputs : MonoBehaviour {
             }
             _movement.Move(inputVector);
             Debug.Log("Moving on player " + _playerNumberString);
+            if(leftY > 0) //moving forward i think otherwise switch with backward
+            {
+                if(_animator.GetCurrentAnimatorStateInfo(2).IsName("Idle"))
+                {
+                    _animator.SetBool("isMovingForward", true);
+                }
+                else
+                {
+                    _animator.SetBool("isMovingForward", false);
+                }
+                
+                if(_animator.GetCurrentAnimatorStateInfo(2).IsName("StrafeRight"))
+                {
+                    _animator.SetBool("rightToForward", true);
+                }
+                else
+                {
+                    _animator.SetBool("rightToForward", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("StrafeLeft"))
+                {
+                    _animator.SetBool("leftToForward", true);
+                }
+                else
+                {
+                    _animator.SetBool("leftToForward", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("MovingBackward"))
+                {
+                    _animator.SetBool("backwardToForward", true);
+                }
+                else
+                {
+                    _animator.SetBool("backwardToForward", false);
+                }
+            }
+
+            else if (leftY < 0) //moving backward i think otherwise switch with forward
+            {
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("Idle"))
+                {
+                    _animator.SetBool("isMovingBackward", true);
+                }
+                else
+                {
+                    _animator.SetBool("isMovingBackward", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("StrafeRight"))
+                {
+                    _animator.SetBool("rightToBackward", true);
+                }
+                else
+                {
+                    _animator.SetBool("rightToBackward", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("StrafeLeft"))
+                {
+                    _animator.SetBool("leftToBackward", true);
+                }
+                else
+                {
+                    _animator.SetBool("leftToBack", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("MovingForward"))
+                {
+                    _animator.SetBool("backwardToBackward", true);
+                }
+                else
+                {
+                    _animator.SetBool("backwardToBackward", false);
+                }
+            }
+
+            if(leftX > 0) //moving right i think otherwise switch with left
+            {
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("Idle"))
+                {
+                    _animator.SetBool("isMovingRight", true);
+                }
+                else
+                {
+                    _animator.SetBool("isMovingRight", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("MovingForward"))
+                {
+                    _animator.SetBool("forwardToRight", true);
+                }
+                else
+                {
+                    _animator.SetBool("forwardToRight", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("StrafeLeft"))
+                {
+                    _animator.SetBool("leftToRight", true);
+                }
+                else
+                {
+                    _animator.SetBool("leftToRight", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("MovingBackward"))
+                {
+                    _animator.SetBool("backwardToRight", true);
+                }
+                else
+                {
+                    _animator.SetBool("backwardToRight", false);
+                }
+            }
+
+            else if (leftX < 0) //moving left i think otherwise switch with right
+            {
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("Idle"))
+                {
+                    _animator.SetBool("isMovingBackward", true);
+                }
+                else
+                {
+                    _animator.SetBool("isMovingBackward", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("StrafeRight"))
+                {
+                    _animator.SetBool("rightToLeft", true);
+                }
+                else
+                {
+                    _animator.SetBool("rightToLeft", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("MovingForward"))
+                {
+                    _animator.SetBool("forwardToLeft", true);
+                }
+                else
+                {
+                    _animator.SetBool("forwardToLeft", false);
+                }
+
+                if (_animator.GetCurrentAnimatorStateInfo(2).IsName("MovingBackward"))
+                {
+                    _animator.SetBool("backwardToLeft", true);
+                }
+                else
+                {
+                    _animator.SetBool("backwardToLeft", false);
+                }
+            }
         }
 
         float rightX = Input.GetAxis(InputAxes.RIGHTX + _playerNumberString); //RIGHT ANALOG X AXIS
