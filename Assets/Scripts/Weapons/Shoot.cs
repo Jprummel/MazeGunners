@@ -25,21 +25,6 @@ public class Shoot : MonoBehaviour {
 
         _animator = GetComponentInChildren<Animator>();
 	}
-	
-	// Update is called once per frame
-    void Update() //<--- subject to removal
-    {
-	    if(Input.GetMouseButtonDown(0))
-        {
-            ShootWeapon();
-            //_animator.SetBool("isMovingForward", true);
-        }
-
-        if(Input.GetMouseButtonUp(0))
-        {
-            //_animator.SetBool("isMovingForward", false);
-        }
-	}
 
     public void ShootWeapon()
     {

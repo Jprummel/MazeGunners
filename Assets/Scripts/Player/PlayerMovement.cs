@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour {
         _playerSpine = transform.Find("PlayerContainer/Heavyrat/pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine");
         _charController = GetComponent<CharacterController>();
         _oldMoveSpeed = _moveSpeed;
-        _animator = GetComponentInChildren<Animator>();
+        _animator = transform.Find("PlayerContainer/Heavyrat").GetComponent<Animator>();
 	}
 
     void Update()
