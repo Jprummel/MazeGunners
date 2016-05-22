@@ -23,7 +23,7 @@ public class HitScanWeapon : MonoBehaviour
         {
             _hit.collider.SendMessageUpwards("Death", SendMessageOptions.DontRequireReceiver); //Call the method Kill() in the gameobject that is hit
             GameObject muzzleFlash = ObjectPool.instance.GetObjectForType(ObjectPoolNames.MUZZLEFLASH, false);
-            muzzleFlash.transform.position = _raycastOriginMuzzle.transform.position;
+            muzzleFlash.transform.position = _particleMuzzle.transform.position;
 
             GameObject hitEffect = ObjectPool.instance.GetObjectForType(ObjectPoolNames.HITEFFECT, false);
             hitEffect.transform.position = _hit.transform.position;
