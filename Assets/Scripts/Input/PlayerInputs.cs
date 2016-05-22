@@ -87,11 +87,7 @@ public class PlayerInputs : MonoBehaviour
         {
            AnimStateHandler.AnimStateGeneral(2);
         }
-        else if (leftY == 0)
-        {
-
-        }
-
+        
         if (leftX > 0) //moving right i think otherwise switch with left
         {
             AnimStateHandler.AnimStateGeneral(3);
@@ -101,10 +97,7 @@ public class PlayerInputs : MonoBehaviour
         {
             AnimStateHandler.AnimStateGeneral(4);
         }
-        else if (leftX == 0)
-        {
-
-        }
+        
 
         float rightX = Input.GetAxis(InputAxes.RIGHTX + _playerNumberString); //RIGHT ANALOG X AXIS
         float rightY = Input.GetAxis(InputAxes.RIGHTY + _playerNumberString); //RIGHT ANALOG X AXIS
