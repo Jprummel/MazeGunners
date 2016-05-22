@@ -8,8 +8,13 @@ public class AnimStateHandler : MonoBehaviour {
 
     void Start()
     {
-        _viewModelAnimator = transform.Find("PlayerContainer/Camera/Viewmodel").GetComponent<Animator>();
-        _playerAnimator = transform.Find("PlayerContainer/Heavyrat").GetComponent<Animator>();
+        _viewModelAnimator = this.transform.Find("PlayerContainer/Camera/Viewmodel").GetComponent<Animator>();
+        _playerAnimator = this.transform.Find("PlayerContainer/Heavyrat").GetComponent<Animator>();
+    }
+
+    public static void Idle()
+    {
+        _playerAnimator.Play("Idle");
     }
 
     public static void ViewState(int whichState)

@@ -66,6 +66,7 @@ public class PlayerInputs : MonoBehaviour
         //Idle
         if (!Input.anyKeyDown && leftY == 0 && leftX == 0)
         {
+            AnimStateHandler.Idle();
             //AnimStateHandler.AnimStateGeneral(0);
         }
 
