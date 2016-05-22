@@ -47,51 +47,7 @@ public class PlayerDeath : MonoBehaviour {
 
     IEnumerator DeathAnimation()
     {
-        if (_animator.GetCurrentAnimatorStateInfo(2).IsName("Idle"))
-        {
-            _animator.SetBool("isDying", true);
-        }
-        else
-        {
-            _animator.SetBool("isDying", false);
-        }
-
-        if (_animator.GetCurrentAnimatorStateInfo(2).IsName("StrafeRight"))
-        {
-            _animator.SetBool("rightToDie", true);
-        }
-        else
-        {
-            _animator.SetBool("rightToDie", false);
-        }
-
-        if (_animator.GetCurrentAnimatorStateInfo(2).IsName("StrafeLeft"))
-        {
-            _animator.SetBool("leftToDie", true);
-        }
-        else
-        {
-            _animator.SetBool("leftToDie", false);
-        }
-
-        if (_animator.GetCurrentAnimatorStateInfo(2).IsName("MovingForward"))
-        {
-            _animator.SetBool("forwardToDie", true);
-        }
-        else
-        {
-            _animator.SetBool("forwardToDie", false);
-        }
-
-        if (_animator.GetCurrentAnimatorStateInfo(2).IsName("MovingBackward"))
-        {
-            _animator.SetBool("backwardToDie", true);
-        }
-        else
-        {
-            _animator.SetBool("backwardToDie", false);
-        }
-
+        AnimStateHandler.AnimStateGeneral(5);
         yield return new WaitForSeconds(_deathDelay);
         _roundData.Remove(this.gameObject);
         ObjectPool.instance.PoolObject(this.gameObject);

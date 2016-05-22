@@ -32,12 +32,12 @@ public class Shoot : MonoBehaviour {
 	    if(Input.GetMouseButtonDown(0))
         {
             ShootWeapon();
-            _animator.SetBool("isMovingForward", true);
+            //_animator.SetBool("isMovingForward", true);
         }
 
         if(Input.GetMouseButtonUp(0))
         {
-            _animator.SetBool("isMovingForward", false);
+            //_animator.SetBool("isMovingForward", false);
         }
 	}
 
@@ -45,18 +45,30 @@ public class Shoot : MonoBehaviour {
     {
         if (_isReloading == false)
         {
-            _animator.Play("Shoot", 1);
+            StartCoroutine(AnimHandling());
             _hitScanWeapon.Shoot();
             StartCoroutine(Reload());
         }
+    }
+
+    IEnumerator AnimHandling()
+    {
+        AnimStateHandler.AnimStateOverride(1);
+        AnimStateHandler.ViewState(1);
+        yield return new WaitForSeconds(0.3f);
+        AnimStateHandler.AnimStateOverride(0);
+        AnimStateHandler.ViewState(0);
     }
 
     IEnumerator Reload()
     {
         _isReloading = true;
         _reloadTime = 0;
+
+        
         while (_isReloading && _reloadTime < 5)
         {
+            
             yield return new WaitForSeconds(_fillSpeed);
             _reloadTime += _fillSpeed;
         }

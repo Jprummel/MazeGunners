@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class RoundData : MonoBehaviour {
 
-    [SerializeField]private List<GameObject> _players;
-    [SerializeField]private Text _RoundEndText;
-	private MazeGenerator _maze;
-    private int _roundNumber;
+    [SerializeField]private List<GameObject>    _players;
+    [SerializeField]private Text                _RoundEndText;
+	                private MazeGenerator       _maze;
+                    private int                 _roundNumber;
 
 	// Use this for initialization
 	void Start () {
-        _roundNumber = 1;
-        _players = new List<GameObject>();
-		_maze = GameObject.FindGameObjectWithTag (Tags.GENERATOR).GetComponent<MazeGenerator>();
+        _roundNumber    = 1;
+        _players        = new List<GameObject>();
+		_maze           = GameObject.FindGameObjectWithTag (Tags.GENERATOR).GetComponent<MazeGenerator>();
 
         RoundStart();
 
@@ -57,8 +57,6 @@ public class RoundData : MonoBehaviour {
             _players.Add(GameObject.Find("Player 4"));
         }
     }
-
- 
 
     IEnumerator GoToNextRound(float waitTime)
     {
