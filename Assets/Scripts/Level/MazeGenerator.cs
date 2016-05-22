@@ -12,7 +12,6 @@ public class MazeGenerator : MonoBehaviour
 		public GameObject east;  //2
 		public GameObject west;  //3
 		public GameObject south; //4
-
 	}
 
 	[SerializeField]private List<GameObject> walls = new List<GameObject> ();
@@ -105,12 +104,6 @@ public class MazeGenerator : MonoBehaviour
 			}
 		}
 		CreateCells ();
-	}
-
-	void CreateFloor ()
-	{
-		Vector3 currentPosition = new Vector3(0, -_floorYOffset, -_wallLength / 2);
-		GameObject floor = Instantiate (_floors [0], currentPosition, Quaternion.identity) as GameObject;
 	}
 
 	void CreateCells ()
@@ -271,13 +264,6 @@ public class MazeGenerator : MonoBehaviour
 	void placeAndSetPlayers(){
 		GameObject tempPlayer;
 		if (_levelData.GetPlayers == 2) {
-			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER1,true);
-			Vector3 spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[0]].west.transform.position.x - .5f,-0.45f,_cells[_playerSpawnCellNumbers[0]].west.transform.position.z);
-			tempPlayer.transform.position = spawnLocation;
-
-			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER2,true);
-			spawnLocation = new Vector3(_cells[_playerSpawnCellNumbers[1]].east.transform.position.x + .5f,-0.45f,_cells[_playerSpawnCellNumbers[1]].east.transform.position.z);
-			tempPlayer.transform.position = spawnLocation;
 			Debug.Log("ech");
 		}else {
 			tempPlayer = ObjectPool.instance.GetObjectForType (ObjectPoolNames.PLAYER1,true);

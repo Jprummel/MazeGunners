@@ -78,7 +78,7 @@ public class PlayerInputs : MonoBehaviour
             }
         }
         _movement.Move(inputVector);
-        Debug.Log("Moving on player " + _playerNumberString);
+        //Debug.Log("Moving on player " + _playerNumberString);
         if (leftY < 0) //moving forward i think otherwise switch with backward
         {
             AnimStateHandler.AnimStateGeneral(1);
@@ -105,13 +105,13 @@ public class PlayerInputs : MonoBehaviour
 
         if (rightX != 0)
         {
-            Debug.Log("Right");
+            //Debug.Log("Right");
             _movement.RotateX(rightX);
         }
 
         if (rightY != 0)
         {
-            Debug.Log("Left");
+            //Debug.Log("Left");
             _movement.RotateY(rightY);
         }
 

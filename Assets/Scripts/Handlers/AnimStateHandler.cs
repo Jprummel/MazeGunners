@@ -3,13 +3,15 @@ using System.Collections;
 
 public class AnimStateHandler : MonoBehaviour {
     
-    public static Animator _playerAnimator;
-    public static Animator _viewModelAnimator;
+	public static Animator _playerAnimator;
+	public static Animator _viewModelAnimator;
 
     void Start()
     {
-        _viewModelAnimator = this.transform.Find("PlayerContainer/Camera/Viewmodel").GetComponent<Animator>();
-        _playerAnimator = this.transform.Find("PlayerContainer/Heavyrat").GetComponent<Animator>();
+		if (_viewModelAnimator == null) {
+			_viewModelAnimator = this.transform.Find("PlayerContainer/Camera/Viewmodel").GetComponent<Animator>();
+			_playerAnimator = this.transform.Find("PlayerContainer/Heavyrat").GetComponent<Animator>();
+		}
     }
 
     public static void Idle()
