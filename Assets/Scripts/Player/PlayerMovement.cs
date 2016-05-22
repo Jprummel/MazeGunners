@@ -5,8 +5,8 @@ public class PlayerMovement : MonoBehaviour {
 
     [SerializeField]private float               _moveSpeed;
                     private CharacterController _charController;
-                    private Transform           _playerArms;
-    [SerializeField]private Transform           _camera;
+                    private Transform           _playerSpine;
+                    private Transform           _camera;
                     private bool                _isBoosting = false;
                     private float               _rotationX;
                     private float               _rotationY;
@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour {
                     private float               _oldMoveSpeed;
 	void Start () 
     {
-        _playerArms = transform.Find("PlayerContainer/Heavyrat/pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine");
+        _camera = transform.Find("PlayerContainer/Camera");
+        _playerSpine = transform.Find("PlayerContainer/Heavyrat/pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine");
         _charController = GetComponent<CharacterController>();
         _oldMoveSpeed = _moveSpeed;
 	}
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 playerRotation = new Vector3(0, _rotationX);
         Vector3 lookingRotation = new Vector3(_rotationY,_rotationX);
         transform.eulerAngles = playerRotation;
-        _playerArms.eulerAngles = lookingRotation;
+        _playerSpine.eulerAngles = lookingRotation;
         _camera.eulerAngles = lookingRotation;
     }
 
