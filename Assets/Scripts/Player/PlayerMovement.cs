@@ -7,11 +7,12 @@ public class PlayerMovement : MonoBehaviour {
                     private CharacterController _charController;
                     private Transform           _playerSpine;
                     private Transform           _camera;
+                    private Animator            _animator;
                     private bool                _isBoosting = false;
                     private float               _rotationX;
                     private float               _rotationY;
     [SerializeField]private float               _minY, _maxY;
-                    private float               _speedUpAmount = 5;
+                    private float               _speedUpAmount = 1;
 	[SerializeField]private float 				_cameraSensitivity = 150;
                     private float               _speedBoostDuration = 3;
                     private float               _oldMoveSpeed;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour {
         _playerSpine = transform.Find("PlayerContainer/Heavyrat/pasted__Character2_Reference/pasted__Character2_Hips/pasted__Character2_Spine");
         _charController = GetComponent<CharacterController>();
         _oldMoveSpeed = _moveSpeed;
+        _animator = GetComponentInChildren<Animator>();
 	}
 
     void Update()
@@ -70,9 +72,11 @@ public class PlayerMovement : MonoBehaviour {
 
     IEnumerator SpeedBoostDelay()
     {
+        _animator.speed = 1.4f;
         yield return new WaitForSeconds(_speedBoostDuration);
         _moveSpeed = _oldMoveSpeed;
         _isBoosting = false;
+        _animator.speed = 1.0f;
     }
 
 }
