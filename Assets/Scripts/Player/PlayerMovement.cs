@@ -27,16 +27,6 @@ public class PlayerMovement : MonoBehaviour {
         UpdateRotation();
     }
 
-    void OnEnable()
-    {
-        BoostPad.OnSpeedUp += SpeedUp;
-    }
-
-    void OnDisable()
-    {
-        BoostPad.OnSpeedUp -= SpeedUp;
-    }
-
     public void Move(Vector3 moveDirection)
     {
         
@@ -67,7 +57,7 @@ public class PlayerMovement : MonoBehaviour {
         _camera.eulerAngles = lookingRotation;
     }
 
-    void SpeedUp()
+    void Boost()
     {
         if (_moveSpeed < (_moveSpeed + _speedUpAmount) && _isBoosting == false)
         {

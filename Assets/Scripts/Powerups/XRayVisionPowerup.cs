@@ -30,16 +30,6 @@ public class XRayVisionPowerup: MonoBehaviour
         }
     }
 
-    void OnEnable()
-    {
-        XRayVisionPickup.OnPickup += ActivateXRay;
-    }
-
-    void OnDisable()
-    {
-        XRayVisionPickup.OnPickup -= ActivateXRay;
-    }
-
     void LookForWall()
     {
         _direction = transform.TransformDirection(Vector3.forward); //the direction the object is facing

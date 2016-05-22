@@ -3,7 +3,7 @@ using System.Collections;
 
 public class XRayVisionPickup : MonoBehaviour {
 
-    public delegate void PickupAction();
+    /*public delegate void PickupAction();
     public static event PickupAction OnPickup;
 
     void PickUp()
@@ -12,5 +12,5 @@ public class XRayVisionPickup : MonoBehaviour {
         {
             OnPickup();
         }
-    }
+    }*/
 }

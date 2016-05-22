@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BoostPad : MonoBehaviour
 {
-    public delegate void SpeedUpAction();
+    /*public delegate void SpeedUpAction();
     public static event SpeedUpAction OnSpeedUp;
 
     void SpeedUp()
@@ -12,5 +12,5 @@ public class BoostPad : MonoBehaviour
         {
             OnSpeedUp();
         }
-    }
+    }*/
 }
