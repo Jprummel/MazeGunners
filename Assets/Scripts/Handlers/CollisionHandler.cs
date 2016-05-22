@@ -8,8 +8,8 @@ public class CollisionHandler : MonoBehaviour {
 
         if (other.gameObject.tag == Tags.PICKUP)
         {
-            //Powerup function here
             this.gameObject.SendMessageUpwards("ActivateXRay", SendMessageOptions.DontRequireReceiver);
+            Destroy(other.gameObject);
         }
 
         else if(other.gameObject.tag == Tags.BOOSTPAD)
